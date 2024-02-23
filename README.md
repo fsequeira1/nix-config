@@ -1,6 +1,9 @@
 # nix-config
 
 ## Apply system configuration
+```bash
+sudo nixos-rebuild switch --flake .#bumblebee
+```
 
 ## Apply your home configuration
 ```bash

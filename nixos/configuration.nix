@@ -15,6 +15,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernel.sysctl = { "vm.swappiness" = 10;};
+
   boot.initrd.luks.devices."luks-16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3".device = "/dev/disk/by-uuid/16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3";
   networking.hostName = "bumblebee"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -44,45 +46,48 @@
     LC_TIME = "pt_PT.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
   # Configure keymap in X11
-  services.xserver = {
-    layout = "pt";
-    xkbVariant = "";
+  services = {
+    # Enable Flatpak.
+    flatpak.enable = true;
+    # Enable CUPS to print documents.
+    printing.enable = true;
+    # Enable the OpenSSH daemon.
+    openssh.enable = true;
+    xserver = {
+      # Enable the X11 windowing system.
+      enable = true;
+      layout = "pt";
+      xkbVariant = "";
+      # Enable the GNOME Desktop Environment.
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      # Enable automatic login for the user.
+      displayManager.autoLogin.enable = true;
+      displayManager.autoLogin.user = "fsequeira";
+    };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
+
+      # use the example session manager (no others are packaged yet so this is enabled by default,
+      # no need to redefine it in your config for now)
+      #media-session.enable = true;
+    };
   };
 
   # Configure console keymap
   console.keyMap = "pt-latin1";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
+  
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fsequeira = {
     isNormalUser = true;
@@ -106,9 +111,6 @@
 #    ];
 #  };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "fsequeira";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -131,10 +133,6 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -150,7 +148,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
-  services.flatpak.enable = true;
 
   # Automatic Garbage Collection
   nix.gc = {
@@ -163,8 +160,6 @@
   system.autoUpgrade = {
       enable = true;
   };
-
-  boot.kernel.sysctl = { "vm.swappiness" = 10;};
 
   nix = {
 	package = pkgs.nixFlakes;
