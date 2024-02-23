@@ -89,8 +89,8 @@
     description = "Filipe Sequeira";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
-    #  thunderbird
+      #firefox
+      #thunderbird
     ];
   };
 
