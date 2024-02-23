@@ -8,22 +8,28 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4b16e873-66e5-46c0-a880-47b6f28a753a";
-      fsType = "ext4";
+  boot = {
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+      kernelModules = [ ];
+      luks.devices."luks-b876dadf-218b-4634-87f4-8f62d6235364".device = "/dev/disk/by-uuid/b876dadf-218b-4634-87f4-8f62d6235364";
     };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
+  };
 
-  boot.initrd.luks.devices."luks-b876dadf-218b-4634-87f4-8f62d6235364".device = "/dev/disk/by-uuid/b876dadf-218b-4634-87f4-8f62d6235364";
+  fileSystems = {
+    "/" =
+      { device = "/dev/disk/by-uuid/4b16e873-66e5-46c0-a880-47b6f28a753a";
+        fsType = "ext4";
+      };
 
-  fileSystems."/boot" =
+    "/boot" =
     { device = "/dev/disk/by-uuid/E81C-D230";
       fsType = "vfat";
     };
+
+  };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/c2dfd031-442d-42fb-9f27-1d2a2a04a2be"; }
