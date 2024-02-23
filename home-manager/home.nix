@@ -46,7 +46,13 @@
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  home.packages = with pkgs; [ spotify ];
+  home.packages = with pkgs; [ 
+    spotify 
+    vscode
+    neovim
+    htop
+    git
+    ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
