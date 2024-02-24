@@ -122,9 +122,24 @@
     usbutils # lsusb
     ];
 
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
-  programs.git.enable = true;
+  
+  # Enable home-manager, git and zsh
+programs = {
+    home-manager.enable = true;
+    git.enable = true;
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+      enableCompletion = true;
+      histSize = 100000;
+
+      ohMyZsh = {                               # Plug-ins
+        enable = true;
+        plugins = [ "git" ];
+      };
+    };
+};
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
