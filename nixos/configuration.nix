@@ -92,6 +92,7 @@
   users.users.fsequeira = {
     isNormalUser = true;
     description = "Filipe Sequeira";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       #firefox
