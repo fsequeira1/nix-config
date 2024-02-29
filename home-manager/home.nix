@@ -47,18 +47,19 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
-    firefox 
-    spotify 
+    unstable.gnome-network-displays
+    firefox
+    spotify
     vscode
-    discord    
+    discord
     neovim
     htop
     git
     vlc
     remmina
 
-    coreutils         # GNU Utilities
-    nix-tree          # Browse Nix Store
+    coreutils # GNU Utilities
+    nix-tree # Browse Nix Store
 
     # neofetch
     ranger # terminal file manager
@@ -79,12 +80,12 @@
     # networking tools
     mtr # A network diagnostic tool
     iperf3
-    dnsutils  # `dig` + `nslookup`
+    dnsutils # `dig` + `nslookup`
     #ldns # replacement of `dig`, it provide the command `drill`
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
-    ipcalc  # it is a calculator for the IPv4/v6 addresses
+    ipcalc # it is a calculator for the IPv4/v6 addresses
 
     # misc
     file
@@ -105,7 +106,7 @@
     # productivity
     glow # markdown previewer in terminal
 
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 
@@ -120,28 +121,27 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
-    ];
+  ];
 
-  
   # Enable home-manager, git and zsh
-programs = {
+  programs = {
     home-manager.enable = true;
     git.enable = true;
     zsh = {
       enable = true;
-      autosuggestions.enable = true;
+      #      autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       enableCompletion = true;
-      histSize = 100000;
+      #      histSize = 100000;
 
-      ohMyZsh = {                               # Plug-ins
-        enable = true;
-        plugins = [ "git" ];
-      };
+      #      ohMyZsh = {                               # Plug-ins
+      #        enable = true;
+      #        plugins = [ "git" ];
+      #      };
     };
-};
+  };
 
-  # Nicely reload system units when changing configs
+  #Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

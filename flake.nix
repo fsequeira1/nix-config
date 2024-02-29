@@ -5,6 +5,9 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
 
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -20,6 +23,7 @@
 
   outputs = {
     self,
+    alejandra,
     nixpkgs,
     home-manager,
     ...
@@ -30,10 +34,16 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       # FIXME replace with your hostname
-      bumblebee = nixpkgs.lib.nixosSystem {
+      bumblebee = nixpkgs.lib.nixosSystem rec {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
-        modules = [./nixos/configuration.nix];
+        system = "x86_64-linux";
+        modules = [
+          {
+            environment.systemPackages = [alejandra.defaultPackage.${system}];
+          }
+          ./nixos/configuration.nix
+        ];
       };
     };
 

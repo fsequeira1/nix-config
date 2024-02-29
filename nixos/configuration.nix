@@ -1,21 +1,22 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-#      <home-manager/nixos>
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    #      <home-manager/nixos>
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernel.sysctl = { "vm.swappiness" = 10;};
+  boot.kernel.sysctl = {"vm.swappiness" = 10;};
 
   boot.initrd.luks.devices."luks-16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3".device = "/dev/disk/by-uuid/16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3";
   networking.hostName = "bumblebee"; # Define your hostname.
@@ -82,48 +83,46 @@
 
   # Configure console keymap
   console.keyMap = "pt-latin1";
-  
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fsequeira = {
     isNormalUser = true;
     description = "Filipe Sequeira";
-    shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    #    shell = pkgs.zsh;
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       #firefox
       #thunderbird
     ];
   };
 
-# home-manager.useGlobalPkgs = true ;
-#  home-manager.users.fsequeira = { pkgs, ... }: {
-#    home.stateVersion = "23.11";  
-#    home.packages = with pkgs; [
-#	vscode
-#	neovim
-#	htop
-#	spotify
-#	
-#    ];
-#  };
-
+  # home-manager.useGlobalPkgs = true ;
+  #  home-manager.users.fsequeira = { pkgs, ... }: {
+  #    home.stateVersion = "23.11";
+  #    home.packages = with pkgs; [
+  #	vscode
+  #	neovim
+  #	htop
+  #	spotify
+  #
+  #    ];
+  #  };
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    # vscode  
-#  wget
+    # vscode
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -133,7 +132,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -149,23 +147,20 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
-
   # Automatic Garbage Collection
   nix.gc = {
-	automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
-  
+
   # Auto system update
   system.autoUpgrade = {
-      enable = true;
+    enable = true;
   };
 
   nix = {
-	package = pkgs.nixFlakes;
-	extraOptions = "experimental-features = nix-command flakes";	
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
   };
-
 }
-
