@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  unstable,
   ...
 }: {
   # You can import other home-manager modules here
@@ -47,7 +48,7 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
-    #unstable.gnome-network-displays
+    unstable.gnome-network-displays
     firefox
     spotify
     vscode

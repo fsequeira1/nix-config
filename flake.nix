@@ -26,11 +26,12 @@
     self,
     alejandra,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    unstable = import <nixpkgs-unstable> {};
+    unstable = nixpkgs-unstable.legacyPackages.${system};
     inherit (self) outputs;
   in {
     # NixOS configuration entrypoint
