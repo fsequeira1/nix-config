@@ -137,14 +137,13 @@
     atuin = {
       enable = true;
       enableZshIntegration = true;
-
     };
     alacritty = {
       enable = true;
       settings = {
         font = {
           normal.family = "FiraCode Nerd Font";
-          bold = { style = "Bold"; };
+          bold = {style = "Bold";};
           size = 11;
         };
         offset = {
@@ -155,7 +154,7 @@
     };
     zellij = {
       enable = true;
-      enableZshIntegration = true;
+      #enableZshIntegration = true;
     };
     zsh = {
       enable = true;
@@ -173,7 +172,6 @@
   };
 
   services = {
-
     home-manager.autoUpgrade = {
       enable = true;
       frequency = "weekly";
