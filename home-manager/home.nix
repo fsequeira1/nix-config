@@ -49,9 +49,9 @@
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
     unstable.gnome-network-displays
-    firefox
-    spotify
+    unstable.firefox
     vscode
+    spotify
     discord
     neovim
     htop
@@ -140,17 +140,6 @@
     };
     alacritty = {
       enable = true;
-      settings = {
-        font = {
-          normal.family = "FiraCode Nerd Font";
-          bold = {style = "Bold";};
-          size = 11;
-        };
-        offset = {
-          x = -1;
-          y = 0;
-        };
-      };
     };
     zellij = {
       enable = true;
