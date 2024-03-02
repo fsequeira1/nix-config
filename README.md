@@ -29,9 +29,15 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 ```
 
 
-# TODO install zed
-# TODO try nvidia offload config try reduce wattage
-# TODO configure gnome shortcuts and extensions, and remove packages
-# split some parts into different modules
+# TODO 
+```
+- install zed
+- try nvidia offload config try reduce wattage
+- configure gnome shortcuts and extensions, and remove packages
+- tests: 
+    - format computer and reinstall everything
+    - upgrade distro 
+- split some parts into different modules
 https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
 https://github.com/MatthiasBenaets/nixos-config/blob/master/modules/desktops/gnome.nix 
+```
