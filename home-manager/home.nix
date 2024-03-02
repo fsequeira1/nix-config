@@ -126,6 +126,8 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+    powertop
+    lshw
   ];
 
   # Enable home-manager, git and zsh
