@@ -134,6 +134,29 @@
   programs = {
     home-manager.enable = true;
     git.enable = true;
+    atuin = {
+      enable = true;
+      enableZshIntegration = true;
+
+    };
+    alacritty = {
+      enable = true;
+      settings = {
+        font = {
+          normal.family = "FiraCode Nerd Font";
+          bold = { style = "Bold"; };
+          size = 11;
+        };
+        offset = {
+          x = -1;
+          y = 0;
+        };
+      };
+    };
+    zellij = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     zsh = {
       enable = true;
       enableAutosuggestions = true;
@@ -141,9 +164,19 @@
       enableCompletion = true;
       oh-my-zsh = {
         enable = true;
-        plugins = ["git"];
+        plugins = [
+          "git"
+        ];
         theme = "robbyrussell";
       };
+    };
+  };
+
+  services = {
+
+    home-manager.autoUpgrade = {
+      enable = true;
+      frequency = "weekly";
     };
   };
 
