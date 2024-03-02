@@ -59,6 +59,10 @@
     vlc
     remmina
 
+    #shell
+    oh-my-zsh
+    atuin
+
     coreutils # GNU Utilities
     nix-tree # Browse Nix Store
 
@@ -130,15 +134,14 @@
     git.enable = true;
     zsh = {
       enable = true;
-      #      autosuggestions.enable = true;
+      enableAutosuggestions = true;
       syntaxHighlighting.enable = true;
       enableCompletion = true;
-      #      histSize = 100000;
-
-      #      ohMyZsh = {                               # Plug-ins
-      #        enable = true;
-      #        plugins = [ "git" ];
-      #      };
+      oh-my-zsh = {
+        enable = true;
+        plugins = ["git"];
+        theme = "robbyrussell";
+      };
     };
   };
 
