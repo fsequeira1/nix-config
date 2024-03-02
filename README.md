@@ -31,7 +31,7 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 
 # TODO 
 ```
-- install zed
+- install zed direnv
 - try nvidia offload config try reduce wattage
 - configure gnome shortcuts and extensions, and remove packages
 - tests: 
