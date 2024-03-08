@@ -50,7 +50,7 @@
   home.packages = with pkgs; [
     unstable.gnome-network-displays
     unstable.firefox
-    vscode
+    #vscode
     spotify
     discord
     neovim
