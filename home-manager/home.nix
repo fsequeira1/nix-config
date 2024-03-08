@@ -101,6 +101,7 @@
     gawk
     zstd
     gnupg
+    direnv
 
     # nix related
     #
