@@ -31,9 +31,10 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 
 # TODO 
 ```
-- remove garbage on programs.vscode
+- remove garbage on programs.vscode.extensions
 - try nvidia offload config try reduce wattage
-- configure gnome shortcuts and extensions, and remove packages
+- configure gnome shortcuts and extensions
+    - https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
 - tests: 
     - format computer and reinstall everything
     - upgrade distro 

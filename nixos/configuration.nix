@@ -61,7 +61,10 @@
       layout = "pt";
       xkbVariant = "";
       # Enable the GNOME Desktop Environment.
-      displayManager.gdm.enable = true;
+       displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
       desktopManager.gnome.enable = true;
       # Enable automatic login for the user.
       displayManager.autoLogin.enable = true;
@@ -158,11 +161,28 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gnome-tour
+  ]) ++ (with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-music
+    gedit # text editor
+    epiphany # web browser
+    geary # email reader
+    gnome-characters
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+    yelp # Help view
+    gnome-contacts
+    gnome-initial-setup
+  ]);
+  programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
-    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    # vscode
-    #  wget
-  ];
+    gnome.gnome-tweaks
+  ]
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
