@@ -181,6 +181,7 @@
       gnome-initial-setup
     ]);
     programs.dconf.enable = true;
+    # /org/gnome/shell/favorite-apps ['firefox.desktop', 'codium.desktop', 'Alacritty.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
     environment.systemPackages = with pkgs; [
       gnome.gnome-tweaks
     ];
