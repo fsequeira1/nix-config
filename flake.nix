@@ -52,10 +52,10 @@
             environment.systemPackages = [alejandra.defaultPackage.${system}];
           }
           {
-              nixpkgs.overlays = [
-                inputs.nix-vscode-extensions.overlays.default
-              ];
-            }
+            nixpkgs.overlays = [
+              inputs.nix-vscode-extensions.overlays.default
+            ];
+          }
           ./nixos/configuration.nix
         ];
       };
