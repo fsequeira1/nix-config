@@ -32,6 +32,7 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 # TODO 
 ```
 - remove garbage on programs.vscode.extensions
+- fix mutabilitty issues with vscode settings.json
 - try nvidia offload config try reduce wattage
 - split some parts into different modules
 - add hyprland and multiple hosts
