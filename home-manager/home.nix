@@ -48,6 +48,15 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
+    #gnome.extensions
+    gnomeExtensions.user-themes
+    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.vitals
+    gnomeExtensions.dash-to-panel
+    gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.space-bar
+
+
     unstable.gnome-network-displays
     unstable.firefox
     #vscode
@@ -271,6 +280,48 @@
       "todo-tree.highlights.customHighlight.BUG.icon" = "bug";
       "todo-tree.highlights.customHighlight.BUG.gutterIcon" = true;
     };
+  };
+
+  dconf.settings = {
+    # ...
+    "org/gnome/shell" = {
+      favorite-apps = [
+        "firefox.desktop"
+        "codium.desktop"
+        "Alacritty.desktop"
+        "org.gnome.Nautilus.desktop"
+        "spotify.desktop"
+      ];
+    };
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+
+      # `gnome-extensions list` for a list
+      enabled-extensions = [
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "trayIconsReloaded@selfmade.pl"
+        "Vitals@CoreCoding.com"
+        "dash-to-panel@jderose9.github.com"
+        "sound-output-device-chooser@kgshank.net"
+        "space-bar@luchrioh"
+      ];
+    };
+    #"org/gnome/desktop/interface" = {
+    #  color-scheme = "prefer-dark";
+    #  enable-hot-corners = false;
+    #};
+    #"org/gnome/desktop/wm/preferences" = {
+    #  workspace-names = [ "Main" ];
+    #};
+    #"org/gnome/desktop/background" = {
+    #  picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-l.png";
+    #  picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-d.png";
+    #};
+    #"org/gnome/desktop/screensaver" = {
+    #  picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-d.png";
+    #  primary-color = "#3465a4";
+    #  secondary-color = "#000000";
+    #};
   };
 
   services = {
