@@ -21,10 +21,6 @@
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
 
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs = {
@@ -32,7 +28,6 @@
     alejandra,
     nixpkgs,
     nixpkgs-unstable,
-    nix-vscode-extensions,
     home-manager,
     ...
   } @ inputs: let
@@ -51,11 +46,6 @@
           {
             environment.systemPackages = [alejandra.defaultPackage.${system}];
           }
-          {
-            nixpkgs.overlays = [
-              inputs.nix-vscode-extensions.overlays.default
-            ];
-          }
           ./nixos/configuration.nix
         ];
       };
@@ -67,7 +57,7 @@
       # FIXME replace with your username@hostname
       "fsequeira@bumblebee" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit unstable inputs outputs;};
+        extraSpecialArgs = {inherit unstable system inputs outputs;};
         # > Our main home-manager configuration file <
         modules = [./home-manager/home.nix];
       };

@@ -31,7 +31,6 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 
 # TODO 
 ```
-- remove garbage on programs.vscode.extensions
 - fix mutabilitty issues with vscode settings.json
     https://github.com/nix-community/home-manager/issues/1800
 - split some parts into different modules

@@ -6,8 +6,18 @@
   config,
   pkgs,
   unstable,
+  system,
   ...
-}: {
+}:
+let 
+  extensions =
+    (import (builtins.fetchGit {
+      url = "https://github.com/nix-community/nix-vscode-extensions";
+      ref = "refs/heads/master";
+      rev = "c43d9089df96cf8aca157762ed0e2ddca9fcd71e";
+    })).extensions.${system};
+in
+ {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -178,53 +188,39 @@
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
 
-    #extensions = with pkgs.open-vsx; [
-    #  # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/open-vsx-latest.json
-#
-    #  # Essentials
-    #  mikestead.dotenv
-    #  editorconfig.editorconfig
-#
-    #  # Interface Improvements
-    #  eamodio.gitlens
-    #  usernamehw.errorlens
-    #  pflannery.vscode-versionlens
-    #  wix.vscode-import-cost
-    #  gruntfuggly.todo-tree
-    #  zhuangtongfa.material-theme
-#
-    #  # Web Dev
-    #  dbaeumer.vscode-eslint
-    #  esbenp.prettier-vscode
-    #  csstools.postcss
-    #  stylelint.vscode-stylelint
-    #  bradlc.vscode-tailwindcss
-    #  davidanson.vscode-markdownlint
-    #  unifiedjs.vscode-mdx
-    #  # zenclabs.previewjs # Error: EROFS: read-only file system
-#
+    extensions = with extensions.open-vsx; [
+      # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/open-vsx-latest.json
+
+      # Essentials
+      mikestead.dotenv
+      editorconfig.editorconfig
+
+      # Interface Improvements
+      eamodio.gitlens
+      usernamehw.errorlens
+      pflannery.vscode-versionlens
+      gruntfuggly.todo-tree
+      zhuangtongfa.material-theme
+   
     #  # Nix
-    #  jnoortheen.nix-ide
-    #  jetpack-io.devbox
-    #  arrterian.nix-env-selector
-#
-    #  # Testing
-    #  ms-playwright.playwright
-    #  firefox-devtools.vscode-firefox-debug
-    #  ms-vscode.test-adapter-converter
-    #  mtxr.sqltools
-    #  mtxr.sqltools-driver-pg
-    #] ++ (with pkgs.vscode-marketplace; [
-    #  mtxr.sqltools-driver-sqlite
-    #  # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
-    #  vitest.explorer # TODO: Check later if this extension has been added to Open VSX
-    #  ms-vscode-remote.vscode-remote-extensionpack
-    #  ms-vscode.remote-explorer
-    #  ms-vsliveshare.vsliveshare
-    #  codeforge.remix-forge
-    #  jackardios.vscode-css-to-tailwindcss
-    #  amodio.toggle-excluded-files
-    #]);
+      jnoortheen.nix-ide
+      #jetpack-io.devbox
+      arrterian.nix-env-selector
+      pinage404.nix-extension-pack
+
+      # Testing
+      mtxr.sqltools
+      mtxr.sqltools-driver-pg
+      ]   ++ (with extensions.vscode-marketplace; [
+      # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
+      ms-playwright.playwright
+      ms-vscode.test-adapter-converter
+      mtxr.sqltools-driver-sqlite
+      ms-vscode-remote.vscode-remote-extensionpack
+      ms-vscode.remote-explorer
+      ms-vsliveshare.vsliveshare
+      amodio.toggle-excluded-files
+    ]);
 
     userSettings = {
       "window.titleBarStyle" = "custom";
