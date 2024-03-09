@@ -31,14 +31,14 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 
 # TODO 
 ```
-- install zed direnv
-- try nvidia offload config try reduce wattage
-- configure gnome shortcuts and extensions, and remove packages
-- tests: 
-    - format computer and reinstall everything
-    - upgrade distro 
+- fix mutabilitty issues with vscode settings.json
+    https://github.com/nix-community/home-manager/issues/1800
 - split some parts into different modules
 - add hyprland and multiple hosts
 https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
 https://github.com/MatthiasBenaets/nixos-config/blob/master/modules/desktops/gnome.nix 
+
+- tests: 
+    - format computer and reinstall everything
+    - upgrade distro 
 ```

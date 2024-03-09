@@ -6,8 +6,18 @@
   config,
   pkgs,
   unstable,
+  system,
   ...
-}: {
+}:
+let 
+  extensions =
+    (import (builtins.fetchGit {
+      url = "https://github.com/nix-community/nix-vscode-extensions";
+      ref = "refs/heads/master";
+      rev = "c43d9089df96cf8aca157762ed0e2ddca9fcd71e";
+    })).extensions.${system};
+in
+ {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -48,9 +58,18 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
+    #gnome.extensions
+    gnomeExtensions.user-themes
+    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.vitals
+    gnomeExtensions.dash-to-panel
+    gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.space-bar
+
+
     unstable.gnome-network-displays
     unstable.firefox
-    vscode
+    #vscode
     spotify
     discord
     neovim
@@ -101,6 +120,7 @@
     gawk
     zstd
     gnupg
+    direnv
 
     # nix related
     #
@@ -158,6 +178,147 @@
         theme = "robbyrussell";
       };
     };
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+
+    mutableExtensionsDir = false;
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
+
+    extensions = with extensions.open-vsx; [
+      # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/open-vsx-latest.json
+
+      # Essentials
+      mikestead.dotenv
+      editorconfig.editorconfig
+
+      # Interface Improvements
+      eamodio.gitlens
+      usernamehw.errorlens
+      pflannery.vscode-versionlens
+      gruntfuggly.todo-tree
+      zhuangtongfa.material-theme
+   
+    #  # Nix
+      jnoortheen.nix-ide
+      #jetpack-io.devbox
+      arrterian.nix-env-selector
+      pinage404.nix-extension-pack
+
+      # Testing
+      mtxr.sqltools
+      mtxr.sqltools-driver-pg
+      ]   ++ (with extensions.vscode-marketplace; [
+      # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
+      ms-playwright.playwright
+      ms-vscode.test-adapter-converter
+      mtxr.sqltools-driver-sqlite
+      ms-vscode-remote.vscode-remote-extensionpack
+      ms-vscode.remote-explorer
+      ms-vsliveshare.vsliveshare
+      amodio.toggle-excluded-files
+    ]);
+
+    userSettings = {
+      "window.titleBarStyle" = "custom";
+      "workbench.colorTheme" = "One Dark Pro Flat";
+      "editor.fontFamily" = "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
+      "editor.inlineSuggest.enabled" = true;
+      "files.autoSave" = "afterDelay"; #TODO check if working
+
+      "testExplorer.useNativeTesting" = true; # TODO: doesn't seem to be a valid option
+
+      "git.autofetch" = true;
+      "git.confirmSync" = false;
+      "git.enableCommitSigning" = true;
+
+      "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[json].editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[javascript].editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[typescript].editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[typescriptreact].editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[jsonc].editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[markdown].editor.defaultFormatter" = "esbenp.prettier-vscode";
+
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
+      #"nix.formatterPath" = "nixpkgs-fmt";
+
+      "errorLens.gutterIconsEnabled" = true;
+      "errorLens.messageMaxChars" = 0;
+
+      "todo-tree.general.statusBar" = "total";
+      "todo-tree.highlights.highlightDelay" = 0;
+      "todo-tree.highlights.customHighlight.TODO.type" = "text";
+      "todo-tree.highlights.customHighlight.TODO.foreground" = "black";
+      "todo-tree.highlights.customHighlight.TODO.background" = "green";
+      "todo-tree.highlights.customHighlight.TODO.iconColour" = "green";
+      "todo-tree.highlights.customHighlight.TODO.icon" = "shield-check";
+      "todo-tree.highlights.customHighlight.TODO.gutterIcon" = true;
+      "todo-tree.highlights.customHighlight.FIXME.type" = "text";
+      "todo-tree.highlights.customHighlight.FIXME.foreground" = "black";
+      "todo-tree.highlights.customHighlight.FIXME.background" = "yellow";
+      "todo-tree.highlights.customHighlight.FIXME.iconColour" = "yellow";
+      "todo-tree.highlights.customHighlight.FIXME.icon" = "shield";
+      "todo-tree.highlights.customHighlight.FIXME.gutterIcon" = true;
+      "todo-tree.highlights.customHighlight.HACK.type" = "text";
+      "todo-tree.highlights.customHighlight.HACK.foreground" = "black";
+      "todo-tree.highlights.customHighlight.HACK.background" = "red";
+      "todo-tree.highlights.customHighlight.HACK.iconColour" = "red";
+      "todo-tree.highlights.customHighlight.HACK.icon" = "shield-x";
+      "todo-tree.highlights.customHighlight.HACK.gutterIcon" = true;
+      "todo-tree.highlights.customHighlight.BUG.type" = "text";
+      "todo-tree.highlights.customHighlight.BUG.foreground" = "black";
+      "todo-tree.highlights.customHighlight.BUG.background" = "orange";
+      "todo-tree.highlights.customHighlight.BUG.iconColour" = "orange";
+      "todo-tree.highlights.customHighlight.BUG.icon" = "bug";
+      "todo-tree.highlights.customHighlight.BUG.gutterIcon" = true;
+    };
+  };
+
+  dconf.settings = {
+    # ...
+    "org/gnome/shell" = {
+      favorite-apps = [
+        "firefox.desktop"
+        "codium.desktop"
+        "Alacritty.desktop"
+        "org.gnome.Nautilus.desktop"
+        "spotify.desktop"
+      ];
+    };
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+
+      # `gnome-extensions list` for a list
+      enabled-extensions = [
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "trayIconsReloaded@selfmade.pl"
+        "Vitals@CoreCoding.com"
+        "dash-to-panel@jderose9.github.com"
+        "sound-output-device-chooser@kgshank.net"
+        "space-bar@luchrioh"
+      ];
+    };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      enable-hot-corners = false;
+    };
+    #"org/gnome/desktop/wm/preferences" = {
+    #  workspace-names = [ "Main" ];
+    #};
+    #"org/gnome/desktop/background" = {
+    #  picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-l.png";
+    #  picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-d.png";
+    #};
+    #"org/gnome/desktop/screensaver" = {
+    #  picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-d.png";
+    #  primary-color = "#3465a4";
+    #  secondary-color = "#000000";
+    #};
   };
 
   services = {

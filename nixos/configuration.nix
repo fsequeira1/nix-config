@@ -61,7 +61,10 @@
       layout = "pt";
       xkbVariant = "";
       # Enable the GNOME Desktop Environment.
-      displayManager.gdm.enable = true;
+       displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
       desktopManager.gnome.enable = true;
       # Enable automatic login for the user.
       displayManager.autoLogin.enable = true;
@@ -129,6 +132,7 @@
 
   programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.defaultUserShell = pkgs.zsh;
   users.users.fsequeira = {
     isNormalUser = true;
     description = "Filipe Sequeira";
@@ -158,11 +162,37 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    # vscode
-    #  wget
-  ];
+  environment.gnome.excludePackages = (with pkgs; [
+      gnome-photos
+      gnome-tour
+    ]) ++ (with pkgs.gnome; [
+      cheese # webcam tool
+      gnome-music
+      gedit # text editor
+      epiphany # web browser
+      geary # email reader
+      gnome-characters
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      yelp # Help view
+      gnome-contacts
+      gnome-initial-setup
+      #baobab      # disk usage analyzer
+      #eog         # image viewer
+      gedit       # text editor
+      simple-scan # document scanner
+      totem       # video player
+      #evince      # document viewer
+      #file-roller # archive manager
+      #seahorse    # password manager
+    ]);
+    programs.dconf.enable = true;
+    # /org/gnome/shell/favorite-apps ['firefox.desktop', 'codium.desktop', 'Alacritty.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
+    environment.systemPackages = with pkgs; [
+      gnome.gnome-tweaks
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

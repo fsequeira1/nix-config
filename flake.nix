@@ -20,6 +20,7 @@
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
+
   };
 
   outputs = {
@@ -56,7 +57,7 @@
       # FIXME replace with your username@hostname
       "fsequeira@bumblebee" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit unstable inputs outputs;};
+        extraSpecialArgs = {inherit unstable system inputs outputs;};
         # > Our main home-manager configuration file <
         modules = [./home-manager/home.nix];
       };
