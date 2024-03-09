@@ -206,7 +206,7 @@ in
 
       # Essentials
       mikestead.dotenv
-      editorconfig.editorconfig
+      #editorconfig.editorconfig
 
       # Interface Improvements
       eamodio.gitlens
