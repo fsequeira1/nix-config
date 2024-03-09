@@ -179,6 +179,14 @@
       yelp # Help view
       gnome-contacts
       gnome-initial-setup
+      #baobab      # disk usage analyzer
+      #eog         # image viewer
+      gedit       # text editor
+      simple-scan # document scanner
+      totem       # video player
+      #evince      # document viewer
+      #file-roller # archive manager
+      #seahorse    # password manager
     ]);
     programs.dconf.enable = true;
     # /org/gnome/shell/favorite-apps ['firefox.desktop', 'codium.desktop', 'Alacritty.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
