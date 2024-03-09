@@ -32,13 +32,13 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 # TODO 
 ```
 - remove garbage on programs.vscode.extensions
-- add autosave vscodium
 - try nvidia offload config try reduce wattage
-- tests: 
-    - format computer and reinstall everything
-    - upgrade distro 
 - split some parts into different modules
 - add hyprland and multiple hosts
 https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
 https://github.com/MatthiasBenaets/nixos-config/blob/master/modules/desktops/gnome.nix 
+
+- tests: 
+    - format computer and reinstall everything
+    - upgrade distro 
 ```

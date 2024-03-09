@@ -231,6 +231,7 @@
       "workbench.colorTheme" = "One Dark Pro Flat";
       "editor.fontFamily" = "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
       "editor.inlineSuggest.enabled" = true;
+      "files.autoSave" = "afterDelay"; #TODO check if working
 
       "testExplorer.useNativeTesting" = true; # TODO: doesn't seem to be a valid option
 
