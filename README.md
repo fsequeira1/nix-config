@@ -32,6 +32,7 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 # TODO 
 ```
 - remove garbage on programs.vscode.extensions
+- add autosave vscodium
 - try nvidia offload config try reduce wattage
 - tests: 
     - format computer and reinstall everything

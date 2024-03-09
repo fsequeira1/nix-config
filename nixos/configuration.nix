@@ -132,6 +132,7 @@
 
   programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.defaultUserShell = pkgs.zsh;
   users.users.fsequeira = {
     isNormalUser = true;
     description = "Filipe Sequeira";
@@ -180,6 +181,7 @@
       gnome-initial-setup
     ]);
     programs.dconf.enable = true;
+    # /org/gnome/shell/favorite-apps ['firefox.desktop', 'codium.desktop', 'Alacritty.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
     environment.systemPackages = with pkgs; [
       gnome.gnome-tweaks
     ];
