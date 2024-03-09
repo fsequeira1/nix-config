@@ -33,7 +33,7 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 ```
 - remove garbage on programs.vscode.extensions
 - fix mutabilitty issues with vscode settings.json
-- try nvidia offload config try reduce wattage
+    https://github.com/nix-community/home-manager/issues/1800
 - split some parts into different modules
 - add hyprland and multiple hosts
 https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
