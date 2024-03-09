@@ -31,7 +31,6 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 
 # TODO 
 ```
-
 - split some parts into different modules
 - add hyprland and multiple hosts
 https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
