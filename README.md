@@ -32,10 +32,13 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 # TODO 
 ```
 - split some parts into different modules
-- add hyprland and multiple hosts
-https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
-https://github.com/MatthiasBenaets/nixos-config/blob/master/modules/desktops/gnome.nix 
-- gnome shortcuts
+https://github.com/Misterio77/nix-config/tree/main/home/misterio/features/desktop/common/wayland-wm
+    - modules/desktop/{gnome.nix, hyprland.nix}
+    - hosts/{bumblebee, wasp, hornet, common}/{configuration.nix, hardware-configuration.nix}
+    - shells/{python, go, java, js}
+    - work    
+
+- gnome shortcuts/ keybindings
 
 - tests: 
     - format computer and reinstall everything
