@@ -34,7 +34,7 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 - split some parts into different modules
 https://github.com/Misterio77/nix-config/tree/main/home/misterio/features/desktop/common/wayland-wm
     - modules/desktop/{gnome.nix, hyprland.nix}
-    - hosts/{bumblebee, wasp, hornet, common}/{configuration.nix, hardware-configuration.nix}
+    - hosts/{wasp, hornet, common}/{configuration.nix, hardware-configuration.nix}
     - shells/{python, go, java, js}
     - work    
 

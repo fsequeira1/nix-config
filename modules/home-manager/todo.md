@@ -1,0 +1,4 @@
+gnome
+hyperland
+git
+vscode
