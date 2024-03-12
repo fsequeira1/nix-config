@@ -69,6 +69,7 @@ in {
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
+    # TODO move extensions to gnome module
     #gnome.extensions
     gnomeExtensions.user-themes
     gnomeExtensions.tray-icons-reloaded
@@ -171,7 +172,7 @@ in {
       enable = true;
       enableZshIntegration = true;
     };
-    alacritty = {
+    kitty = {
       enable = true;
     };
     zellij = {
@@ -192,6 +193,8 @@ in {
       };
     };
   };
+
+# TODO move to vscode module and reduce vscode plugins 
 
   programs.vscode = {
     enable = true;
@@ -294,13 +297,14 @@ in {
     };
   };
 
+# TODO move to gnome module
   dconf.settings = {
     # ...
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
         "codium.desktop"
-        "Alacritty.desktop"
+        "kitty.desktop"
         "org.gnome.Nautilus.desktop"
         "spotify.desktop"
       ];

@@ -60,6 +60,7 @@
       enable = true;
       layout = "pt";
       xkbVariant = "";
+      # TODO move to gnome module
       # Enable the GNOME Desktop Environment.
       displayManager.gdm = {
         enable = true;
@@ -82,6 +83,8 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
+
+    # TODO move to laptop module
     # laptop configs
     thermald.enable = true;
 
@@ -111,6 +114,8 @@
     };
   };
   #powerManagement.powertop.enable = true;
+
+###### TODO  until ^
 
   # Configure console keymap
   console.keyMap = "pt-latin1";
@@ -152,6 +157,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  #TODO move to gnome module
   environment.gnome.excludePackages =
     (with pkgs; [
       gnome-photos
@@ -185,6 +191,7 @@
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
   ];
+  ###
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
