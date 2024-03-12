@@ -6,6 +6,7 @@
   config,
   pkgs,
   unstable,
+  user,
   system,
   ...
 }:
@@ -62,10 +63,9 @@ in
     };
   };
 
-  # TODO: Set your username, use variable
   home = {
-    username = "fsequeira";
-    homeDirectory = "/home/fsequeira";
+    username = "${user}";
+    homeDirectory = "/home/${user}";
   };
 
   # Add stuff for your user as you see fit:
@@ -166,7 +166,10 @@ in
   # Enable home-manager, git and zsh
   programs = {
     home-manager.enable = true;
-    git.enable = true;
+    git = {
+      enable = true;
+      #username = "";
+    };
     atuin = {
       enable = true;
       enableZshIntegration = true;
@@ -237,12 +240,12 @@ in
 
     userSettings = {
       "window.titleBarStyle" = "custom";
+      "window.zoomLevel" = 3;
+      "editor.mouseWheelZoom" = true;
       "workbench.colorTheme" = "One Dark Pro Flat";
       "editor.fontFamily" = "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
       "editor.inlineSuggest.enabled" = true;
-      "files.autoSave" = "afterDelay"; #TODO check if working
-
-      "testExplorer.useNativeTesting" = true; # TODO: doesn't seem to be a valid option
+      "files.autoSave" = "afterDelay";
 
       "git.autofetch" = true;
       "git.confirmSync" = false;
