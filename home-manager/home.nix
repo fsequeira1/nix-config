@@ -9,16 +9,14 @@
   user,
   system,
   ...
-}:
-let 
+}: let
   extensions =
     (import (builtins.fetchGit {
       url = "https://github.com/nix-community/nix-vscode-extensions";
       ref = "refs/heads/master";
       rev = "c43d9089df96cf8aca157762ed0e2ddca9fcd71e";
     })).extensions.${system};
-in
- {
+in {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -33,12 +31,12 @@ in
     (import (builtins.fetchurl {
       url = "https://gist.githubusercontent.com/piousdeer/b29c272eaeba398b864da6abf6cb5daa/raw/41e569ba110eb6ebbb463a6b1f5d9fe4f9e82375/mutability.nix";
       sha256 = "4b5ca670c1ac865927e98ac5bf5c131eca46cc20abf0bd0612db955bfc979de8";
-    }) { inherit config lib; })
+    }) {inherit config lib;})
 
     (import (builtins.fetchurl {
       url = "https://gist.githubusercontent.com/piousdeer/b29c272eaeba398b864da6abf6cb5daa/raw/41e569ba110eb6ebbb463a6b1f5d9fe4f9e82375/vscode.nix";
       sha256 = "fed877fa1eefd94bc4806641cea87138df78a47af89c7818ac5e76ebacbd025f";
-    }) { inherit config lib pkgs; })
+    }) {inherit config lib pkgs;})
   ];
 
   nixpkgs = {
@@ -78,7 +76,6 @@ in
     gnomeExtensions.dash-to-panel
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.space-bar
-
 
     unstable.gnome-network-displays
     unstable.firefox
@@ -204,39 +201,41 @@ in
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
 
-    extensions = with extensions.open-vsx; [
-      # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/open-vsx-latest.json
+    extensions = with extensions.open-vsx;
+      [
+        # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/open-vsx-latest.json
 
-      # Essentials
-      mikestead.dotenv
-      #editorconfig.editorconfig
+        # Essentials
+        mikestead.dotenv
+        #editorconfig.editorconfig
 
-      # Interface Improvements
-      eamodio.gitlens
-      usernamehw.errorlens
-      pflannery.vscode-versionlens
-      gruntfuggly.todo-tree
-      zhuangtongfa.material-theme
-   
-    #  # Nix
-      jnoortheen.nix-ide
-      #jetpack-io.devbox
-      arrterian.nix-env-selector
-      pinage404.nix-extension-pack
+        # Interface Improvements
+        eamodio.gitlens
+        usernamehw.errorlens
+        pflannery.vscode-versionlens
+        gruntfuggly.todo-tree
+        zhuangtongfa.material-theme
 
-      # Testing
-      mtxr.sqltools
-      mtxr.sqltools-driver-pg
-      ]   ++ (with extensions.vscode-marketplace; [
-      # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
-      ms-playwright.playwright
-      ms-vscode.test-adapter-converter
-      mtxr.sqltools-driver-sqlite
-      ms-vscode-remote.vscode-remote-extensionpack
-      ms-vscode.remote-explorer
-      ms-vsliveshare.vsliveshare
-      amodio.toggle-excluded-files
-    ]);
+        #  # Nix
+        jnoortheen.nix-ide
+        #jetpack-io.devbox
+        arrterian.nix-env-selector
+        pinage404.nix-extension-pack
+
+        # Testing
+        mtxr.sqltools
+        mtxr.sqltools-driver-pg
+      ]
+      ++ (with extensions.vscode-marketplace; [
+        # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
+        ms-playwright.playwright
+        ms-vscode.test-adapter-converter
+        mtxr.sqltools-driver-sqlite
+        ms-vscode-remote.vscode-remote-extensionpack
+        ms-vscode.remote-explorer
+        ms-vsliveshare.vsliveshare
+        amodio.toggle-excluded-files
+      ]);
 
     userSettings = {
       "window.titleBarStyle" = "custom";

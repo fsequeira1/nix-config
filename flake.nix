@@ -26,7 +26,7 @@
   } @ inputs: let
     system = "x86_64-linux";
     unstable = nixpkgs-unstable.legacyPackages.${system};
-    # FIXME replace with your username 
+    # FIXME replace with your username
     # (this will be propagated) to home-manager
     user = "fsequeira";
     inherit (self) outputs;
@@ -42,7 +42,7 @@
           {
             environment.systemPackages = [alejandra.defaultPackage.${system}];
           }
-          ./nixos/configuration.nix
+          ./hosts/bumblebee/configuration.nix
         ];
       };
     };

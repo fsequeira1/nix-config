@@ -61,7 +61,7 @@
       layout = "pt";
       xkbVariant = "";
       # Enable the GNOME Desktop Environment.
-       displayManager.gdm = {
+      displayManager.gdm = {
         enable = true;
         wayland = true;
       };
@@ -152,10 +152,12 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.gnome.excludePackages = (with pkgs; [
+  environment.gnome.excludePackages =
+    (with pkgs; [
       gnome-photos
       gnome-tour
-    ]) ++ (with pkgs.gnome; [
+    ])
+    ++ (with pkgs.gnome; [
       cheese # webcam tool
       gnome-music
       gedit # text editor
@@ -171,18 +173,18 @@
       gnome-initial-setup
       #baobab      # disk usage analyzer
       #eog         # image viewer
-      gedit       # text editor
+      gedit # text editor
       simple-scan # document scanner
-      totem       # video player
+      totem # video player
       #evince      # document viewer
       #file-roller # archive manager
       #seahorse    # password manager
     ]);
-    programs.dconf.enable = true;
-    # /org/gnome/shell/favorite-apps ['firefox.desktop', 'codium.desktop', 'Alacritty.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
-    environment.systemPackages = with pkgs; [
-      gnome.gnome-tweaks
-    ];
+  programs.dconf.enable = true;
+  # /org/gnome/shell/favorite-apps ['firefox.desktop', 'codium.desktop', 'Alacritty.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
+  environment.systemPackages = with pkgs; [
+    gnome.gnome-tweaks
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
