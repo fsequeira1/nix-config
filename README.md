@@ -31,11 +31,10 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 
 # TODO 
 ```
+    - configure desktop from scratch, format, uefi, encrypt disk
+    - gnome shortcuts/ keybindings create hashmap with bindings, use similar in gnome and hyprland
     - modules/{hyprland.nix}
     - steam with flatpack
-    - shells/{python, go, java, js}
-
-- gnome shortcuts/ keybindings
 
 - tests: 
     - format computer and reinstall everything
