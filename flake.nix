@@ -36,7 +36,7 @@
     nixosConfigurations = {
       # FIXME replace with your hostname
       bumblebee = nixpkgs.lib.nixosSystem rec {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs user outputs;};
         # > Our main nixos configuration file <
         modules = [
           {
