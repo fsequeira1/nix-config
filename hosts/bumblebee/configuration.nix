@@ -4,11 +4,14 @@
 {
   config,
   pkgs,
+  user,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/nixos/gnome.nix
+    ../../modules/nixos/laptop.nix
     #      <home-manager/nixos>
   ];
 
@@ -19,7 +22,7 @@
   boot.kernel.sysctl = {"vm.swappiness" = 10;};
 
   boot.initrd.luks.devices."luks-16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3".device = "/dev/disk/by-uuid/16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3";
-  networking.hostName = "bumblebee"; # Define your hostname.
+  networking.hostName = "bumblebee"; # FIXME Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -60,16 +63,9 @@
       enable = true;
       layout = "pt";
       xkbVariant = "";
-      # TODO move to gnome module
-      # Enable the GNOME Desktop Environment.
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
-      desktopManager.gnome.enable = true;
       # Enable automatic login for the user.
       displayManager.autoLogin.enable = true;
-      displayManager.autoLogin.user = "fsequeira";
+      displayManager.autoLogin.user = ${user};
     };
     pipewire = {
       enable = true;
@@ -81,41 +77,9 @@
 
       # use the example session manager (no others are packaged yet so this is enabled by default,
       # no need to redefine it in your config for now)
-      #media-session.enable = true;
-    };
-
-    # TODO move to laptop module
-    # laptop configs
-    thermald.enable = true;
-
-    ### TLP breaks hibernation
-    power-profiles-daemon.enable = false;
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-        CPU_BOOST_ON_AC = 1;
-        CPU_BOOST_ON_BAT = 0;
-
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 20;
-
-        #Optional helps save long term battery health
-        START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
-        STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
-      };
     };
   };
-  #powerManagement.powertop.enable = true;
-
-###### TODO  until ^
+      #media-session.enable = true;
 
   # Configure console keymap
   console.keyMap = "pt-latin1";
@@ -128,7 +92,7 @@
   programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.defaultUserShell = pkgs.zsh;
-  users.users.fsequeira = {
+  users.users.${user} = {
     isNormalUser = true;
     description = "Filipe Sequeira";
     shell = pkgs.zsh;
@@ -139,58 +103,8 @@
     ];
   };
 
-  # home-manager.useGlobalPkgs = true ;
-  #  home-manager.users.fsequeira = { pkgs, ... }: {
-  #    home.stateVersion = "23.11";
-  #    home.packages = with pkgs; [
-  #	vscode
-  #	neovim
-  #	htop
-  #	spotify
-  #
-  #    ];
-  #  };
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  #TODO move to gnome module
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      gnome-photos
-      gnome-tour
-    ])
-    ++ (with pkgs.gnome; [
-      cheese # webcam tool
-      gnome-music
-      gedit # text editor
-      epiphany # web browser
-      geary # email reader
-      gnome-characters
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-      yelp # Help view
-      gnome-contacts
-      gnome-initial-setup
-      #baobab      # disk usage analyzer
-      #eog         # image viewer
-      gedit # text editor
-      simple-scan # document scanner
-      totem # video player
-      #evince      # document viewer
-      #file-roller # archive manager
-      #seahorse    # password manager
-    ]);
-  programs.dconf.enable = true;
-  # /org/gnome/shell/favorite-apps ['firefox.desktop', 'codium.desktop', 'Alacritty.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
-  environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
-  ];
   ###
 
   # Some programs need SUID wrappers, can be configured further or are
