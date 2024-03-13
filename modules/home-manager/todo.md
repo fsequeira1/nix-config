@@ -1,4 +1,0 @@
-gnome
-hyperland
-git
-vscode

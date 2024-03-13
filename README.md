@@ -31,11 +31,9 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 
 # TODO 
 ```
-- split some parts into different modules
-https://github.com/Misterio77/nix-config/tree/main/home/misterio/features/desktop/common/wayland-wm
     - modules/{hyprland.nix}
+    - steam with flatpack
     - shells/{python, go, java, js}
-    - work    
 
 - gnome shortcuts/ keybindings
 
