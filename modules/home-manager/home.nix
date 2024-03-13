@@ -10,6 +10,9 @@
   system,
   ...
 }: let
+  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+    gke-gcloud-auth-plugin
+  ]);
   extensions =
     (import (builtins.fetchGit {
       url = "https://github.com/nix-community/nix-vscode-extensions";
@@ -57,7 +60,11 @@ in {
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = _: true;
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-original"
+        "steam-run"
+      ];
     };
   };
 
@@ -151,6 +158,22 @@ in {
     usbutils # lsusb
     powertop
     lshw
+
+    #gaming
+    steam-tui
+    steamcmd
+
+
+    #work
+    gdk
+    kubectl
+    awscli2
+    flyctl
+    packer
+    ansible
+    terraform
+    go
+    python3
   ];
 
   # Enable home-manager, git and zsh
@@ -170,6 +193,9 @@ in {
     zellij = {
       enable = true;
       #enableZshIntegration = true;
+    };
+    steam = {
+      enable = true;
     };
     zsh = {
       enable = true;
@@ -220,6 +246,11 @@ in {
         # Testing
         #mtxr.sqltools
         #mtxr.sqltools-driver-pg
+
+        # work
+        ipedrazas.kubernetes-snippets
+        
+
       ]
       ++ (with extensions.vscode-marketplace; [
         # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
@@ -233,6 +264,7 @@ in {
       ]);
 
     userSettings = {
+      #"disable-hardware-acceleration" = true;
       "window.titleBarStyle" = "custom";
       "window.zoomLevel" = 3;
       "editor.mouseWheelZoom" = true;
@@ -254,7 +286,7 @@ in {
       "[markdown].editor.defaultFormatter" = "esbenp.prettier-vscode";
 
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
+      #"nix.serverPath" = "nil";
       #"nix.formatterPath" = "nixpkgs-fmt";
 
       "errorLens.gutterIconsEnabled" = true;

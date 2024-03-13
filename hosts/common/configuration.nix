@@ -82,6 +82,9 @@
     ];
   };
 
+  # Force Wayland on Electron apps and others
+ # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   ###

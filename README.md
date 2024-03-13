@@ -34,7 +34,9 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
     - configure desktop from scratch, format, uefi, encrypt disk
     - gnome shortcuts/ keybindings create hashmap with bindings, use similar in gnome and hyprland
     - modules/{hyprland.nix}
-    - steam with flatpack
+
+    - install 
+    docker
 
 - tests: 
     - format computer and reinstall everything
