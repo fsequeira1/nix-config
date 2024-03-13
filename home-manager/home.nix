@@ -215,7 +215,7 @@ in {
         # Interface Improvements
         eamodio.gitlens
         usernamehw.errorlens
-        pflannery.vscode-versionlens
+        #pflannery.vscode-versionlens
         gruntfuggly.todo-tree
         zhuangtongfa.material-theme
 
@@ -226,17 +226,17 @@ in {
         pinage404.nix-extension-pack
 
         # Testing
-        mtxr.sqltools
-        mtxr.sqltools-driver-pg
+        #mtxr.sqltools
+        #mtxr.sqltools-driver-pg
       ]
       ++ (with extensions.vscode-marketplace; [
         # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
-        ms-playwright.playwright
-        ms-vscode.test-adapter-converter
-        mtxr.sqltools-driver-sqlite
-        ms-vscode-remote.vscode-remote-extensionpack
-        ms-vscode.remote-explorer
-        ms-vsliveshare.vsliveshare
+        #ms-playwright.playwright
+        #ms-vscode.test-adapter-converter
+        #mtxr.sqltools-driver-sqlite
+        #ms-vscode-remote.vscode-remote-extensionpack
+        #ms-vscode.remote-explorer
+        #ms-vsliveshare.vsliveshare
         amodio.toggle-excluded-files
       ]);
 
