@@ -65,7 +65,7 @@
       xkbVariant = "";
       # Enable automatic login for the user.
       displayManager.autoLogin.enable = true;
-      displayManager.autoLogin.user = ${user};
+      displayManager.autoLogin.user = "${user}";
     };
     pipewire = {
       enable = true;
