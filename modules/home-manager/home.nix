@@ -296,7 +296,7 @@ in {
       favorite-apps = [
         "firefox.desktop"
         "codium.desktop"
-        "kitty.desktop" # TODO replace with terminal 
+        "org.gnome.Console.desktop" 
         "org.gnome.Nautilus.desktop"
         "spotify.desktop"
       ];
