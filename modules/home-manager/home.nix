@@ -60,11 +60,7 @@ in {
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "steam"
-        "steam-original"
-        "steam-run"
-      ];
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -137,6 +133,7 @@ in {
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
+    nil
 
     # productivity
     glow # markdown previewer in terminal
@@ -193,9 +190,6 @@ in {
     zellij = {
       enable = true;
       #enableZshIntegration = true;
-    };
-    steam = {
-      enable = true;
     };
     zsh = {
       enable = true;
@@ -286,8 +280,8 @@ in {
       "[markdown].editor.defaultFormatter" = "esbenp.prettier-vscode";
 
       "nix.enableLanguageServer" = true;
-      #"nix.serverPath" = "nil";
-      #"nix.formatterPath" = "nixpkgs-fmt";
+      "nix.serverPath" = "nil"; 
+      "nix.formatterPath" = "nixpkgs-fmt";
 
       "errorLens.gutterIconsEnabled" = true;
       "errorLens.messageMaxChars" = 0;
