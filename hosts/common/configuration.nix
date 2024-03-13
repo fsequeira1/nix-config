@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
+  #config,
   pkgs,
   user,
   ...
@@ -81,10 +81,10 @@
     description = "Filipe Sequeira";
     shell = pkgs.zsh;
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
+    #packages = with pkgs; [
       #firefox
       #thunderbird
-    ];
+    #];
   };
 
   # Force Wayland on Electron apps and others

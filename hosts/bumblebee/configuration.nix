@@ -13,6 +13,7 @@
     ../common/configuration.nix
     ../../modules/nixos/gnome.nix
     ../../modules/nixos/laptop.nix
+    ../../modules/nixos/docker.nix
     #      <home-manager/nixos>
   ];
 
