@@ -80,7 +80,7 @@
     isNormalUser = true;
     description = "Filipe Sequeira";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     #packages = with pkgs; [
       #firefox
       #thunderbird
