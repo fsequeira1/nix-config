@@ -63,6 +63,20 @@ close=['<Shift><Super>q']
 [org/gnome/settings-daemon/plugins/media-keys]
 home=['<Super>e']
 
+
+
+/org/gnome/shell/extensions/dash-to-panel/panel-sizes
+  '{"0":32}'
+
+/org/gnome/shell/extensions/dash-to-panel/appicon-margin
+  4
+
+
+/org/gnome/shell/extensions/dash-to-panel/panel-positions
+  '{"0":"TOP"}'
+
+
+
     ```
     - modules/{hyprland.nix}
 
