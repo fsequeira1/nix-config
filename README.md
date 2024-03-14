@@ -1,11 +1,23 @@
 # nix-config
 
 ## Apply system configuration
+
+```bash
+sudo nixos-rebuild switch --flake .#$(hostname)
+```
+or
+
 ```bash
 sudo nixos-rebuild switch --flake .#bumblebee
 ```
 
 ## Apply your home configuration
+
+```bash
+home-manager switch --flake .#$(whoami)@$(hostname)
+```
+or
+
 ```bash
 home-manager switch --flake .#fsequeira@bumblebee
 
