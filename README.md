@@ -30,7 +30,7 @@ nix flake lock --update-input home-manager
 sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 ```
 
-## No such file or directory
+## No such file or directory (when restructuring flake)
 ```bash
 sudo nix-store --repair --verify --check-contents
 ```
