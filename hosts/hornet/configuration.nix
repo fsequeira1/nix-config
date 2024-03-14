@@ -18,4 +18,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "hornet"; # Define your hostname.
+
+  programs.hyprland.enable = true;
 }
