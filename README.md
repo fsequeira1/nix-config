@@ -9,7 +9,9 @@ sudo nixos-rebuild switch --flake .#bumblebee
 ```bash
 home-manager switch --flake .#fsequeira@bumblebee
 
-# on first run might need this
+# on first run might need to add git to the packages on /etc/nixos/configuration.nix
+# and then the commands bellow, after that you can use home-
+nix-shell -p git
 nix build .#homeConfigurations.fsequeira@bumblebee.activationPackage && ./result/activate
 ```
 
