@@ -91,6 +91,10 @@
   };
 
   environment.systemPackages = [ pkgs.steam ];
+  programs.steam.package = pkgs.steam.override {
+     withPrimus = true;
+     extraPkgs = pkgs: [ bumblebee glxinfo ];
+  };
   # Force Wayland on Electron apps and others
  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
