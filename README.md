@@ -50,7 +50,6 @@ sudo nix-store --repair --verify --check-contents
 
 # TODO 
 ```
-    - configure desktop from scratch, format, uefi, encrypt disk
     - gnome shortcuts/ keybindings create hashmap with bindings, use similar in gnome and hyprland
     ```
 [org/gnome/desktop/peripherals/touchpad]
@@ -79,8 +78,4 @@ home=['<Super>e']
 
     ```
     - modules/{hyprland.nix}
-
-- tests: 
-    - format computer and reinstall everything
-    - upgrade distro 
 ```
