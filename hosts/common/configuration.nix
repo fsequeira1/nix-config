@@ -70,12 +70,9 @@
 
   programs = {
     zsh.enable = true;
-    #steam = {
-    #  enable = true;
-      #package = pkgs.steam.override {
-      #  extraLibraries = (pkgs: [ pkgs.openssl pkgs.nghttp2 pkgs.libidn2 pkgs.rtmpdump pkgs.libpsl pkgs.curl pkgs.krb5 pkgs.keyutils ]);
-      #};
-    #};
+    steam = {
+      enable = true;
+    };
   };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.defaultUserShell = pkgs.zsh;
@@ -90,14 +87,6 @@
     #];
   };
 
-  
-  programs.steam = {
-    enable = true;
-    package = pkgs.steam.override {
-      withPrimus = true;
-      extraPkgs = pkgs: [ bumblebee glxinfo ];
-    };
-  };
   # Force Wayland on Electron apps and others
  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
