@@ -50,6 +50,9 @@ sudo nix-store --repair --verify --check-contents
 
 # TODO 
 ```
+https://github.com/Misterio77/nix-config/blob/main/hosts/common/optional/quietboot.nix
+
+
     - gnome shortcuts/ keybindings create hashmap with bindings, use similar in gnome and hyprland
     ```
 [org/gnome/desktop/peripherals/touchpad]
@@ -78,4 +81,6 @@ home=['<Super>e']
 
     ```
     - modules/{hyprland.nix}
+
+
 ```
