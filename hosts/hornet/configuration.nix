@@ -8,6 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../common/configuration.nix
+      ../../modules/nixos/gnome.nix
+      ../../modules/nixos/docker.nix
     ];
 
   # Bootloader.
