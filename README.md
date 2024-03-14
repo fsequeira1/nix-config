@@ -36,7 +36,6 @@ sudo nix-store --repair --verify --check-contents
 
 # TODO 
 ```
-    - add github action to validate everything
     - configure desktop from scratch, format, uefi, encrypt disk
     - gnome shortcuts/ keybindings create hashmap with bindings, use similar in gnome and hyprland
     - modules/{hyprland.nix}
