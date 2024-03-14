@@ -38,6 +38,18 @@ sudo nix-store --repair --verify --check-contents
 ```
     - configure desktop from scratch, format, uefi, encrypt disk
     - gnome shortcuts/ keybindings create hashmap with bindings, use similar in gnome and hyprland
+    ```
+[org/gnome/desktop/peripherals/touchpad]
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/wm/keybindings]
+activate-window-menu=['<Alt>space']
+close=['<Shift><Super>q']
+
+[org/gnome/settings-daemon/plugins/media-keys]
+home=['<Super>e']
+
+    ```
     - modules/{hyprland.nix}
 
 - tests: 
