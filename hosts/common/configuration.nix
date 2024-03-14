@@ -72,6 +72,7 @@
     zsh.enable = true;
     steam = {
       enable = true;
+      gamescopeSession.enable = true;
     };
   };
   # Define a user account. Don't forget to set a password with ‘passwd’.
