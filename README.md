@@ -78,6 +78,15 @@ home=['<Super>e']
   '{"0":"TOP"}'
 
 
+/org/gnome/desktop/peripherals/mouse/natural-scroll
+  true
+
+## ONLY to desktop
+/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type
+  'nothing'
+
+
+
 
     ```
     - modules/{hyprland.nix}
