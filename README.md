@@ -50,11 +50,11 @@ sudo nix-store --repair --verify --check-contents
 
 # TODO 
 ```
-https://github.com/Misterio77/nix-config/blob/main/hosts/common/optional/quietboot.nix
+- https://github.com/Misterio77/nix-config/blob/main/hosts/common/optional/quietboot.nix
+- gnome shortcuts/ keybindings create hashmap with bindings, use similar in gnome and hyprland
+- modules/{hyprland.nix}
+- https://github.com/fufexan/dotfiles/blob/main/system/core/security.nix
 
-
-    - gnome shortcuts/ keybindings create hashmap with bindings, use similar in gnome and hyprland
-    ```
 [org/gnome/desktop/peripherals/touchpad]
 two-finger-scrolling-enabled=true
 
@@ -84,12 +84,5 @@ home=['<Super>e']
 ## ONLY to desktop
 /org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type
   'nothing'
-
-
-
-
-    ```
-    - modules/{hyprland.nix}
-
 
 ```
