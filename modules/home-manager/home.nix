@@ -178,7 +178,9 @@ in {
     home-manager.enable = true;
     git = {
       enable = true;
-      #username = "";
+      extraConfig.url."ssh://git@".pushInsteadOf = "https://";
+      userName = "Filipe Sequeira";
+      userEmail = "fsequeira1@users.noreply.github.com";
     };
     atuin = {
       enable = true;
