@@ -228,7 +228,7 @@ in {
         eamodio.gitlens
         usernamehw.errorlens
         #pflannery.vscode-versionlens
-        gruntfuggly.todo-tree
+        #gruntfuggly.todo-tree
         zhuangtongfa.material-theme
 
         #  # Nix
