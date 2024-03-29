@@ -7,7 +7,6 @@
   user,
   ...
 }: {
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -58,7 +57,7 @@
       # no need to redefine it in your config for now)
     };
   };
-      #media-session.enable = true;
+  #media-session.enable = true;
 
   # Configure console keymap
   console.keyMap = "pt-latin1";
@@ -83,13 +82,13 @@
     shell = pkgs.zsh;
     extraGroups = ["networkmanager" "wheel" "docker"];
     #packages = with pkgs; [
-      #firefox
-      #thunderbird
+    #firefox
+    #thunderbird
     #];
   };
 
   # Force Wayland on Electron apps and others
- # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

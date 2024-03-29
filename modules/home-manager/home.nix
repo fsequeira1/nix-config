@@ -10,7 +10,7 @@
   system,
   ...
 }: let
-  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+  gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
     gke-gcloud-auth-plugin
   ]);
   extensions =
@@ -18,7 +18,9 @@
       url = "https://github.com/nix-community/nix-vscode-extensions";
       ref = "refs/heads/master";
       rev = "c43d9089df96cf8aca157762ed0e2ddca9fcd71e";
-    })).extensions.${system};
+    }))
+    .extensions
+    .${system};
 in {
   # You can import other home-manager modules here
   imports = [
@@ -72,7 +74,6 @@ in {
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
-
     unstable.gnome-network-displays
     unstable.firefox
     #vscode
@@ -160,7 +161,6 @@ in {
     steam-tui
     steamcmd
 
-
     #work
     gdk
     kubectl
@@ -208,7 +208,7 @@ in {
     };
   };
 
-# TODO move to vscode module and reduce vscode plugins 
+  # TODO move to vscode module and reduce vscode plugins
 
   programs.vscode = {
     enable = true;
@@ -245,8 +245,6 @@ in {
 
         # work
         ipedrazas.kubernetes-snippets
-        
-
       ]
       ++ (with extensions.vscode-marketplace; [
         # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
@@ -282,7 +280,7 @@ in {
       "[markdown].editor.defaultFormatter" = "esbenp.prettier-vscode";
 
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil"; 
+      "nix.serverPath" = "nil";
       "nix.formatterPath" = "nixpkgs-fmt";
 
       "errorLens.gutterIconsEnabled" = true;
@@ -317,14 +315,14 @@ in {
     };
   };
 
-# TODO move to gnome module
+  # TODO move to gnome module
   dconf.settings = {
     # ...
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
         "codium.desktop"
-        "org.gnome.Console.desktop" 
+        "org.gnome.Console.desktop"
         "org.gnome.Nautilus.desktop"
         "spotify.desktop"
       ];
