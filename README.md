@@ -59,7 +59,6 @@ sudo nix-store --repair --verify --check-contents
 two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/wm/keybindings]
-activate-window-menu=['<Alt>space']
 close=['<Shift><Super>q']
 
 [org/gnome/settings-daemon/plugins/media-keys]
@@ -80,6 +79,43 @@ home=['<Super>e']
 
 /org/gnome/desktop/peripherals/mouse/natural-scroll
   true
+
+/org/gnome/settings-daemon/plugins/media-keys/home
+  ['<Super>e']
+
+/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding
+  '<Control><Alt>t'
+/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command
+  'gnome-terminal'
+/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name
+  'Terminal'
+
+/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+  ['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
+/org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled
+  true
+
+
+/org/gnome/desktop/peripherals/mouse/natural-scroll
+  true
+
+/org/gnome/desktop/peripherals/touchpad/tap-to-click
+  true
+
+/org/gnome/desktop/peripherals/touchpad/speed
+  0.23735408560311289
+
+/org/gnome/shell/extensions/dash-to-panel/panel-positions
+  '{"0":"TOP"}'
+
+/org/gnome/shell/extensions/dash-to-panel/panel-sizes
+  '{"0":32}'
+
+/org/gnome/shell/extensions/dash-to-panel/appicon-margin
+  0
+
+
 
 ## ONLY to desktop
 /org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type
