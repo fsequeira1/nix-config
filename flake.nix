@@ -42,6 +42,14 @@
           ./hosts/bumblebee/configuration.nix
         ];
       };
+      
+      wasp = nixpkgs.lib.nixosSystem rec {
+        specialArgs = {inherit inputs user outputs;};
+        modules = [
+          { environment.systemPackages = [alejandra.defaultPackage.${system}];}
+          ./hosts/wasp/configuration.nix
+        ];
+      };
 
       hornet = nixpkgs.lib.nixosSystem rec {
         specialArgs = {inherit inputs user outputs;};
@@ -58,6 +66,13 @@
     homeConfigurations = {
       # FIXME replace with your username@hostname
       "${user}@bumblebee" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit unstable user system inputs outputs;};
+        # > Our main home-manager configuration file <
+        modules = [./modules/home-manager/home.nix];
+      };
+      
+      "${user}@wasp" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit unstable user system inputs outputs;};
         # > Our main home-manager configuration file <
