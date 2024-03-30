@@ -254,6 +254,7 @@ in {
         #ms-vscode.remote-explorer
         #ms-vsliveshare.vsliveshare
         amodio.toggle-excluded-files
+        ettoreciprian.vscode-websearch
       ]);
 
     userSettings = {
@@ -350,8 +351,8 @@ in {
       tap-to-click = true;
     };
     "org/gnome/desktop/wm/keybindings" = {
-      close = "['<Shift><Super>q']";
-      show-desktop = "['<Super>d']";
+      close = ["<Super><Shift>q"];
+      show-desktop = ["<Super>d"];
     };
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = true;
@@ -360,9 +361,9 @@ in {
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
       home = ["<Super>e"];
-      next = ["<Shift><Control>n"];
-      previous = ["<Shift><Control>p"];
-      play = ["<Shift><Control>space"];
+      next = ["<Super><Shift>n"];
+      previous = ["<Super><Shift>p"];
+      play = ["<Super><Shift>space"];
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
