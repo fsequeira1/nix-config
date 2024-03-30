@@ -344,6 +344,45 @@ in {
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
     };
+    "org/gnome/desktop/peripherals/touchpad" = {
+      two-finger-scrolling-enabled = true;
+      speed = 0.23735408560311289;
+      tap-to-click = true;
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+      close = "['<Shift><Super>q']";
+    }; 
+    "org/gnome/desktop/peripherals/mouse" = {
+      natural-scroll = true;
+      speed = -0.5;
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+        home = [ "<Super>e" ];
+        next = [ "<Shift><Control>n" ];
+        previous = [ "<Shift><Control>p" ];
+        play = [ "<Shift><Control>space" ];
+        custom-keybindings = [
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+          #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+          #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+        ];
+      };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        name = "Terminal";
+        command = "gnome-terminal";
+        binding = "<Control><Alt>t";
+      };
+
+    "org/gnome/shell/extensions/dash-to-panel" = {
+        appicon-margin = 0;
+        # TODO fix this
+      #  panel-positions = (lib.hm.gvariant.mkDictionaryEntry["0" "TOP"]);
+        #panel-positions = '{"0":"TOP"}';
+        #panel-sizes = '{"0":32}';
+      };
+
     #"org/gnome/desktop/wm/preferences" = {
     #  workspace-names = [ "Main" ];
     #};
