@@ -1,7 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
-  inputs,
   lib,
   config,
   pkgs,
@@ -353,37 +352,37 @@ in {
     "org/gnome/desktop/wm/keybindings" = {
       close = "['<Shift><Super>q']";
       show-desktop = "['<Super>d']";
-    }; 
+    };
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = true;
       speed = -0.5;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-        home = [ "<Super>e" ];
-        next = [ "<Shift><Control>n" ];
-        previous = [ "<Shift><Control>p" ];
-        play = [ "<Shift><Control>space" ];
-        custom-keybindings = [
-          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-          #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-          #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
-          #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
-        ];
-      };
+      home = ["<Super>e"];
+      next = ["<Shift><Control>n"];
+      previous = ["<Shift><Control>p"];
+      play = ["<Shift><Control>space"];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+        #"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+      ];
+    };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-        name = "Terminal";
-        command = "kitty";
-        binding = "<Control><Alt>t";
-      };
+      name = "Terminal";
+      command = "kitty";
+      binding = "<Control><Alt>t";
+    };
 
     "org/gnome/shell/extensions/dash-to-panel" = {
-        appicon-margin = 0;
-        # TODO fix this
-        panel-positions = (lib.hm.gvariant.mkDictionaryEntry["0" ("TOP")]);
-        #panel-positions = '{"0":"TOP"}';
-        #panel-sizes = '{"0":32}';
-      };
+      appicon-margin = 0;
+      # TODO fix this
+      panel-positions = lib.hm.gvariant.mkDictionaryEntry ["0" "TOP"];
+      #panel-positions = '{"0":"TOP"}';
+      #panel-sizes = '{"0":32}';
+    };
 
     #"org/gnome/desktop/background" = {
     #  picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-l.png";

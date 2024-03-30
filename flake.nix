@@ -35,7 +35,7 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       # FIXME replace with your hostname
-      bumblebee = nixpkgs.lib.nixosSystem rec {
+      bumblebee = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs user outputs;};
         modules = [
           {environment.systemPackages = [alejandra.defaultPackage.${system}];}
@@ -43,7 +43,7 @@
         ];
       };
 
-      wasp = nixpkgs.lib.nixosSystem rec {
+      wasp = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs user outputs;};
         modules = [
           {environment.systemPackages = [alejandra.defaultPackage.${system}];}
@@ -51,7 +51,7 @@
         ];
       };
 
-      hornet = nixpkgs.lib.nixosSystem rec {
+      hornet = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs user outputs;};
         modules = [
           {environment.systemPackages = [alejandra.defaultPackage.${system}];}
