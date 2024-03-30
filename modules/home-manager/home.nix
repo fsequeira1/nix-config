@@ -336,8 +336,9 @@ in {
         "trayIconsReloaded@selfmade.pl"
         "Vitals@CoreCoding.com"
         "dash-to-panel@jderose9.github.com"
-        "sound-output-device-chooser@kgshank.net"
-        "space-bar@luchrioh"
+        "caffeine@patapon.info"
+        "quick-settings-audio-panel@rayzeq.github.io"
+        "blur-my-shell@aunetx"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -351,6 +352,7 @@ in {
     };
     "org/gnome/desktop/wm/keybindings" = {
       close = "['<Shift><Super>q']";
+      show-desktop = "['<Super>d']";
     }; 
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = true;
@@ -371,29 +373,21 @@ in {
       };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         name = "Terminal";
-        command = "gnome-terminal";
+        command = "kitty";
         binding = "<Control><Alt>t";
       };
 
     "org/gnome/shell/extensions/dash-to-panel" = {
         appicon-margin = 0;
         # TODO fix this
-      #  panel-positions = (lib.hm.gvariant.mkDictionaryEntry["0" "TOP"]);
+        panel-positions = (lib.hm.gvariant.mkDictionaryEntry["0" ("TOP")]);
         #panel-positions = '{"0":"TOP"}';
         #panel-sizes = '{"0":32}';
       };
 
-    #"org/gnome/desktop/wm/preferences" = {
-    #  workspace-names = [ "Main" ];
-    #};
     #"org/gnome/desktop/background" = {
     #  picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-l.png";
     #  picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-d.png";
-    #};
-    #"org/gnome/desktop/screensaver" = {
-    #  picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-d.png";
-    #  primary-color = "#3465a4";
-    #  secondary-color = "#000000";
     #};
   };
 

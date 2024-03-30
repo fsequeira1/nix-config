@@ -54,7 +54,8 @@
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.vitals
     gnomeExtensions.dash-to-panel
-    gnomeExtensions.sound-output-device-chooser
-    gnomeExtensions.space-bar
+    gnomeExtensions.caffeine
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.quick-settings-audio-panel
   ];
 }
