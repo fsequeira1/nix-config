@@ -378,10 +378,12 @@ in {
 
     "org/gnome/shell/extensions/dash-to-panel" = {
       appicon-margin = 0;
-      # TODO fix this
-      panel-positions = lib.hm.gvariant.mkDictionaryEntry ["0" "TOP"];
-      #panel-positions = '{"0":"TOP"}';
-      #panel-sizes = '{"0":32}';
+      panel-positions = builtins.toJSON {
+        "0" = "TOP";
+      };
+      panel-sizes = builtins.toJSON {
+        "0" = 32;
+      }; 
     };
 
     #"org/gnome/desktop/background" = {

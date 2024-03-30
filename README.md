@@ -50,7 +50,5 @@ sudo nix-store --repair --verify --check-contents
 
 # TODO 
 ```
-
 - modules/{hyprland.nix}
-- https://github.com/fufexan/dotfiles/blob/main/system/core/security.nix
 ```
