@@ -78,6 +78,7 @@ in {
     #vscode
     spotify
     discord
+    slack
     neovim
     htop
     git
