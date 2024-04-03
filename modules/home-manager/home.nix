@@ -261,7 +261,7 @@ in {
     userSettings = {
       #"disable-hardware-acceleration" = true;
       "window.titleBarStyle" = "custom";
-      "window.zoomLevel" = 3;
+      "window.zoomLevel" = 1;
       "editor.mouseWheelZoom" = true;
       "workbench.colorTheme" = "One Dark Pro Flat";
       "editor.fontFamily" = "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
