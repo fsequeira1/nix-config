@@ -4,6 +4,7 @@
 {
   config,
   lib,
+  pkgs,
   modulesPath,
   ...
 }: {
@@ -12,13 +13,28 @@
   ];
 
   boot = {
+    extraModulePackages = [];
+    kernelModules = ["kvm-intel"];
     initrd = {
       availableKernelModules = ["xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
       kernelModules = [];
       luks.devices."luks-b876dadf-218b-4634-87f4-8f62d6235364".device = "/dev/disk/by-uuid/b876dadf-218b-4634-87f4-8f62d6235364";
     };
-    kernelModules = ["kvm-intel"];
-    extraModulePackages = [];
+    plymouth = {
+      enable = true;
+      theme = "lone";
+      themePackages = [(pkgs.adi1090x-plymouth-themes.override {selected_themes = ["lone"];})];
+    };
+    loader.timeout = 0;
+    kernelParams = [
+      "quiet"
+      "loglevel=3"
+      "systemd.show_status=auto"
+      "udev.log_level=3"
+      "rd.udev.log_level=3"
+      "vt.global_cursor_default=0"
+    ];
+    consoleLogLevel = 0;
   };
 
   fileSystems = {

@@ -9,6 +9,7 @@
     ../../modules/nixos/gnome.nix
     ../../modules/nixos/laptop.nix
     ../../modules/nixos/docker.nix
+    ../../modules/nixos/security.nix
     #      <home-manager/nixos>
   ];
 
