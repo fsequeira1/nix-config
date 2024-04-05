@@ -51,4 +51,6 @@ sudo nix-store --repair --verify --check-contents
 # TODO 
 ```
 - modules/{hyprland.nix}
+- configure neovim (lazyvim or nvchad)
+- test nixos upgrade system version
 ```

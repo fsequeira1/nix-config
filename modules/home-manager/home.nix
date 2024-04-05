@@ -171,6 +171,7 @@ in {
     terraform
     go
     python3
+    bat 
   ];
 
   # Enable home-manager, git and zsh
