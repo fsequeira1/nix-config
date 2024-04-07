@@ -187,9 +187,6 @@ in {
       enable = true;
       enableZshIntegration = true;
     };
-    kitty = {
-      enable = true;
-    };
     zellij = {
       enable = true;
       #enableZshIntegration = true;
@@ -375,7 +372,7 @@ in {
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       name = "Terminal";
-      command = "kitty";
+      command = "kgx";
       binding = "<Control><Alt>t";
     };
 
