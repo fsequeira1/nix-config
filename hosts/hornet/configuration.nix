@@ -17,4 +17,18 @@
   networking.hostName = "hornet"; # Define your hostname.
 
   programs.hyprland.enable = true;
+
+  system.autoUpgrade = {
+    enable = true;
+    dates = "daily";
+    allowReboot = true;
+    #flake = self.outPath;
+    flake = "github:fsequeira1/nix-config#hornet";
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--no-write-lock-file"
+      "-L" # print build logs
+    ];
+  };
 }

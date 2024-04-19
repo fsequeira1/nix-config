@@ -76,6 +76,8 @@ in {
     unstable.gnome-network-displays
     unstable.firefox
     #vscode
+    foliate
+    zoom-us
     spotify
     discord
     slack
@@ -171,7 +173,7 @@ in {
     terraform
     go
     python3
-    bat 
+    bat
   ];
 
   # Enable home-manager, git and zsh
@@ -383,7 +385,7 @@ in {
       };
       panel-sizes = builtins.toJSON {
         "0" = 32;
-      }; 
+      };
     };
 
     #"org/gnome/desktop/background" = {

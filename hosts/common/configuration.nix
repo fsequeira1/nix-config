@@ -122,11 +122,6 @@
     options = "--delete-older-than 7d";
   };
 
-  # Auto system update
-  system.autoUpgrade = {
-    enable = true;
-  };
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
