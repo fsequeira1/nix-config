@@ -170,7 +170,7 @@ in {
     flyctl
     packer
     ansible
-    terraform
+    unstable.terraform
     go
     python3
     bat
