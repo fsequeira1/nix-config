@@ -21,7 +21,7 @@
   system.autoUpgrade = {
     enable = true;
     dates = "daily";
-    allowReboot = true;
+    #allowReboot = true;
     #flake = self.outPath;
     flake = "github:fsequeira1/nix-config#hornet";
     flags = [
