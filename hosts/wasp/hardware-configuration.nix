@@ -13,6 +13,7 @@
   ];
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [];
     kernelModules = ["kvm-intel"];
     initrd = {
