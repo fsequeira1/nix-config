@@ -170,12 +170,13 @@ in {
     flyctl
     packer
     ansible
-    unstable.terraform
-    unstable.go
     python3
     bat
-    delve
-    gopls
+    unstable.terraform
+    unstable.go
+    unstable.delve
+    unstable.gopls
+    unstable.go-tools
   ];
 
   # Enable home-manager, git and zsh
