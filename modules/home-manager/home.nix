@@ -171,9 +171,11 @@ in {
     packer
     ansible
     unstable.terraform
-    go
+    unstable.go
     python3
     bat
+    delve
+    gopls
   ];
 
   # Enable home-manager, git and zsh
@@ -245,6 +247,7 @@ in {
 
         # work
         ipedrazas.kubernetes-snippets
+        golang.go
       ]
       ++ (with extensions.vscode-marketplace; [
         # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
