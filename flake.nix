@@ -25,7 +25,10 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    unstable = import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; };
+    unstable = import nixpkgs-unstable {
+      system = "x86_64-linux";
+      config = {allowUnfree = true;};
+    };
     # FIXME replace with your username
     # (this will be propagated) to home-manager
     user = "fsequeira";
