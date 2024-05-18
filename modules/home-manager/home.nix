@@ -347,8 +347,10 @@ in {
         "blur-my-shell@aunetx"
       ];
     };
-    "org/gnome/mutter/dynamic-workspaces" = true;
-    "org/gnome/mutter/workspaces-only-on-primary" = true;
+    "org/gnome/mutter" = {
+      dynamic-workspaces = true;
+      workspaces-only-on-primary = true;
+    };
 
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
