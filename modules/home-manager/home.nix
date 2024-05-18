@@ -264,7 +264,7 @@ in {
       ]);
 
     userSettings = {
-      #"disable-hardware-acceleration" = true;
+      "disable-hardware-acceleration" = true;
       "window.titleBarStyle" = "custom";
       "window.zoomLevel" = 1;
       "editor.mouseWheelZoom" = true;
@@ -347,6 +347,9 @@ in {
         "blur-my-shell@aunetx"
       ];
     };
+    "org/gnome/mutter/dynamic-workspaces" = true;
+    "org/gnome/mutter/workspaces-only-on-primary" = true;
+
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
