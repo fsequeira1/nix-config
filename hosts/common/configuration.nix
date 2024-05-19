@@ -44,6 +44,11 @@
       displayManager.autoLogin.enable = true;
       displayManager.autoLogin.user = "${user}";
     };
+    #tailscale
+    tailscale = {
+      enable = true;
+      useRoutingFeatures = "client";
+    };
     pipewire = {
       enable = true;
       alsa.enable = true;
