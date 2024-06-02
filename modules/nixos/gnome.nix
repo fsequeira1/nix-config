@@ -22,6 +22,7 @@
     (with pkgs; [
       gnome-photos
       gnome-tour
+      gedit
     ])
     ++ (with pkgs.gnome; [
       cheese # webcam tool
