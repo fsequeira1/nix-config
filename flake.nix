@@ -43,6 +43,13 @@
         modules = [
           {environment.systemPackages = [alejandra.defaultPackage.${system}];}
           ./hosts/bumblebee/configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit unstable user system inputs outputs;};
+            home-manager.users.${user} = import ./modules/home-manager/home.nix;
+          }
         ];
       };
 
@@ -51,6 +58,13 @@
         modules = [
           {environment.systemPackages = [alejandra.defaultPackage.${system}];}
           ./hosts/wasp/configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit unstable user system inputs outputs;};
+            home-manager.users.${user} = import ./modules/home-manager/home.nix;
+          }
         ];
       };
 
@@ -59,33 +73,14 @@
         modules = [
           {environment.systemPackages = [alejandra.defaultPackage.${system}];}
           ./hosts/hornet/configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit unstable user system inputs outputs;};
+            home-manager.users.${user} = import ./modules/home-manager/home.nix;
+          }
         ];
-      };
-    };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      # FIXME replace with your username@hostname
-      "${user}@bumblebee" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit unstable user system inputs outputs;};
-        # > Our main home-manager configuration file <
-        modules = [./modules/home-manager/home.nix];
-      };
-
-      "${user}@wasp" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit unstable user system inputs outputs;};
-        # > Our main home-manager configuration file <
-        modules = [./modules/home-manager/home.nix];
-      };
-
-      "${user}@hornet" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit unstable user system inputs outputs;};
-        # > Our main home-manager configuration file <
-        modules = [./modules/home-manager/home.nix];
       };
     };
   };
