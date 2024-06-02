@@ -26,7 +26,7 @@
     ++ (with pkgs.gnome; [
       cheese # webcam tool
       gnome-music
-      gedit # text editor
+      #gedit # text editor
       epiphany # web browser
       geary # email reader
       gnome-characters
@@ -39,7 +39,6 @@
       gnome-initial-setup
       #baobab      # disk usage analyzer
       #eog         # image viewer
-      gedit # text editor
       simple-scan # document scanner
       totem # video player
       #evince      # document viewer

@@ -38,11 +38,16 @@
     xserver = {
       # Enable the X11 windowing system.
       enable = true;
-      layout = "pt";
-      xkbVariant = "";
+      xkb = {
+        layout = "pt";
+        variant = "";
+
+      };
       # Enable automatic login for the user.
-      displayManager.autoLogin.enable = true;
-      displayManager.autoLogin.user = "${user}";
+    };
+    displayManager = { 
+      autoLogin.enable = true;
+      autoLogin.user = "${user}";
     };
     #tailscale
     tailscale = {
