@@ -46,9 +46,3 @@ sudo nixos-rebuild switch --flake .#bumblebee --show-trace -L
 ```bash
 sudo nix-store --repair --verify --check-contents
 ```
-
-
-# TODO 
-```
-- test nixos upgrade system version
-```
