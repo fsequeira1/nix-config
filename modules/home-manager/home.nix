@@ -250,6 +250,8 @@ in {
         # work
         ipedrazas.kubernetes-snippets
         golang.go
+        ms-python.python
+        #yzane.markdown-pdf
       ]
       ++ (with extensions.vscode-marketplace; [
         # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
