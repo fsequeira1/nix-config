@@ -47,7 +47,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "hm-backup";
+            home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {inherit unstable user system inputs outputs;};
             home-manager.users.${user} = import ./modules/home-manager/home.nix;
           }
