@@ -335,6 +335,9 @@ in {
         "spotify.desktop"
       ];
     };
+    "org/gnome/gnome-session" = { 
+      auto-save-session = true;
+    };
     "org/gnome/shell" = {
       disable-user-extensions = false;
 
