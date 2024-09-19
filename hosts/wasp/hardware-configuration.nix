@@ -11,6 +11,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+  systemd.network.wait-online.enable = false;
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
@@ -23,6 +24,7 @@
       kernelModules = [];
       availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
       verbose = false;
+      systemd.network.wait-online.enable = false;
     };
     plymouth = {
       enable = true;
