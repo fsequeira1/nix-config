@@ -12,12 +12,15 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
+
   boot = {
     extraModulePackages = [];
     kernelModules = ["kvm-intel"];
     initrd = {
-      availableKernelModules = ["xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
       kernelModules = [];
+      availableKernelModules = ["xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
       luks.devices."luks-b876dadf-218b-4634-87f4-8f62d6235364".device = "/dev/disk/by-uuid/b876dadf-218b-4634-87f4-8f62d6235364";
     };
     plymouth = {
@@ -37,16 +40,16 @@
     consoleLogLevel = 0;
   };
 
-  fileSystems = {
-    "/" = {
+  fileSystems."/" = {
       device = "/dev/disk/by-uuid/4b16e873-66e5-46c0-a880-47b6f28a753a";
       fsType = "ext4";
     };
 
-    "/boot" = {
+  boot.initrd.luks.devices."luks-16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3".device = "/dev/disk/by-uuid/16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3";
+
+     fileSystems."/boot" = {
       device = "/dev/disk/by-uuid/E81C-D230";
       fsType = "vfat";
-    };
   };
 
   swapDevices = [
@@ -61,9 +64,11 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  hardware.nvidia = {
+  hardware = {
+    cpu = {
+      intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    };
+  nvidia = {
     # Modesetting is needed for most Wayland compositors
     modesetting.enable = true;
 
@@ -78,11 +83,13 @@
   };
 
   # Enable OpenGL
-  hardware.opengl = {
+    opengl = {
     enable = true;
+    extraPackages = with pkgs; [intel-media-driver];
     driSupport = true;
     driSupport32Bit = true;
   };
+};
   #
   #  services.xserver.videoDrivers = ["nvidia"];
   #  hardware.nvidia = {

@@ -12,6 +12,9 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [];

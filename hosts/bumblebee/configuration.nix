@@ -19,13 +19,13 @@
 
   boot.kernel.sysctl = {"vm.swappiness" = 10;};
 
-  boot.initrd.luks.devices."luks-16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3".device = "/dev/disk/by-uuid/16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3";
   networking.hostName = "bumblebee"; # FIXME Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  
   system.autoUpgrade = {
     enable = true;
     dates = "daily";
