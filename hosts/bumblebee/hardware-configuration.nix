@@ -22,6 +22,7 @@
       kernelModules = [];
       availableKernelModules = ["xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
       luks.devices."luks-b876dadf-218b-4634-87f4-8f62d6235364".device = "/dev/disk/by-uuid/b876dadf-218b-4634-87f4-8f62d6235364";
+      verbose = false;
     };
     plymouth = {
       enable = true;
