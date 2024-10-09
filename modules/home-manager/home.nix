@@ -86,6 +86,7 @@ in {
     git
     vlc
     remmina
+    whatsapp-for-linux
 
     #shell
     oh-my-zsh
