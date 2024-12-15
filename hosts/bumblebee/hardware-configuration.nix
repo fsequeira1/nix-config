@@ -83,12 +83,12 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # Enable OpenGL
-    opengl = {
+  # Enable graphics
+    graphics = {
     enable = true;
     extraPackages = with pkgs; [intel-media-driver];
     driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 };
   #

@@ -70,10 +70,10 @@
     cpu = {
       intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
-    opengl = {
+    graphics = {
       enable = true;
       extraPackages = with pkgs; [intel-media-driver];
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
   };
 }

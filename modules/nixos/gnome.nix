@@ -24,7 +24,7 @@
       gnome-tour
       gedit
     ])
-    ++ (with pkgs.gnome; [
+    ++ (with pkgs; [
       cheese # webcam tool
       gnome-music
       #gedit # text editor
@@ -48,7 +48,7 @@
     ]);
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
+    gnome-tweaks
     #gnome.extensions
     gnomeExtensions.user-themes
     gnomeExtensions.tray-icons-reloaded
