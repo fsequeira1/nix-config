@@ -69,22 +69,7 @@
           }
         ];
       };
-
-      hornet = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs user outputs;};
-        modules = [
-          {environment.systemPackages = [alejandra.defaultPackage.${system}];}
-          ./hosts/hornet/configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = {inherit unstable user system inputs outputs;};
-            home-manager.users.${user} = import ./modules/home-manager/home.nix;
-          }
-        ];
-      };
+      
     };
   };
 }
