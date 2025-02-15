@@ -85,11 +85,10 @@
 
   # Enable graphics
     graphics = {
-    enable = true;
-    extraPackages = with pkgs; [intel-media-driver];
-    driSupport = true;
-    enable32Bit = true;
-  };
+      enable = true;
+      extraPackages = with pkgs; [intel-media-driver];
+      enable32Bit = true;
+    };
 };
   #
   #  services.xserver.videoDrivers = ["nvidia"];
