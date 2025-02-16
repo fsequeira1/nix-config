@@ -165,6 +165,8 @@ in {
     steamcmd
 
     #work
+    k9s
+    kind
     gdk
     kubectl
     awscli2

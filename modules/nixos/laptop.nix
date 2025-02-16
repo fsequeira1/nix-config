@@ -6,9 +6,9 @@
     # laptop configs
     thermald.enable = true;
     #powerManagement.powertop.enable = true;
-
+    power-profiles-daemon.enable = false;
     auto-cpufreq = {
-      enable = false;
+      enable = true;
       settings = {
         battery = {
           governor = "balanced";
