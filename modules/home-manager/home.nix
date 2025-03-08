@@ -87,6 +87,7 @@ in {
     vlc
     remmina
     whatsapp-for-linux
+    waydroid
 
     #shell
     oh-my-zsh
