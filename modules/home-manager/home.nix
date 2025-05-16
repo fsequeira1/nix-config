@@ -182,6 +182,7 @@ in {
     unstable.gopls
     unstable.go-tools
     unstable.chromium
+    lmstudio
   ];
 
   # Enable home-manager, git and zsh
