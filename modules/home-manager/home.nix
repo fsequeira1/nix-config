@@ -224,107 +224,109 @@ in {
     package = pkgs.vscodium;
 
     mutableExtensionsDir = false;
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
 
-    extensions = with extensions.open-vsx;
-      [
-        # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/open-vsx-latest.json
+    profiles.default = {
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
+      extensions = with extensions.open-vsx;
+        [
+          # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/open-vsx-latest.json
 
-        # Essentials
-        mikestead.dotenv
-        #editorconfig.editorconfig
+          # Essentials
+          mikestead.dotenv
+          #editorconfig.editorconfig
 
-        # Interface Improvements
-        eamodio.gitlens
-        usernamehw.errorlens
-        #pflannery.vscode-versionlens
-        #gruntfuggly.todo-tree
-        zhuangtongfa.material-theme
+          # Interface Improvements
+          eamodio.gitlens
+          usernamehw.errorlens
+          #pflannery.vscode-versionlens
+          #gruntfuggly.todo-tree
+          zhuangtongfa.material-theme
 
-        #  # Nix
-        jnoortheen.nix-ide
-        #jetpack-io.devbox
-        arrterian.nix-env-selector
-        pinage404.nix-extension-pack
+          #  # Nix
+          jnoortheen.nix-ide
+          #jetpack-io.devbox
+          arrterian.nix-env-selector
+          pinage404.nix-extension-pack
 
-        # Testing
-        #mtxr.sqltools
-        #mtxr.sqltools-driver-pg
+          # Testing
+          #mtxr.sqltools
+          #mtxr.sqltools-driver-pg
 
-        # work
-        ipedrazas.kubernetes-snippets
-        golang.go
-        ms-python.python
-        #yzane.markdown-pdf
-      ]
-      ++ (with extensions.vscode-marketplace; [
-        # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
-        #ms-playwright.playwright
-        #ms-vscode.test-adapter-converter
-        #mtxr.sqltools-driver-sqlite
-        #ms-vscode-remote.vscode-remote-extensionpack
-        #ms-vscode.remote-explorer
-        #ms-vsliveshare.vsliveshare
-        amodio.toggle-excluded-files
-        ettoreciprian.vscode-websearch
-      ]);
+          # work
+          ipedrazas.kubernetes-snippets
+          golang.go
+          ms-python.python
+          #yzane.markdown-pdf
+        ]
+        ++ (with extensions.vscode-marketplace; [
+          # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
+          #ms-playwright.playwright
+          #ms-vscode.test-adapter-converter
+          #mtxr.sqltools-driver-sqlite
+          #ms-vscode-remote.vscode-remote-extensionpack
+          #ms-vscode.remote-explorer
+          #ms-vsliveshare.vsliveshare
+          amodio.toggle-excluded-files
+          ettoreciprian.vscode-websearch
+        ]);
 
-    userSettings = {
-      "disable-hardware-acceleration" = true;
-      "window.titleBarStyle" = "custom";
-      "window.zoomLevel" = 1;
-      "editor.mouseWheelZoom" = true;
-      "workbench.colorTheme" = "One Dark Pro Flat";
-      "editor.fontFamily" = "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
-      "editor.inlineSuggest.enabled" = true;
-      "files.autoSave" = "afterDelay";
+      userSettings = {
+        "disable-hardware-acceleration" = true;
+        "window.titleBarStyle" = "custom";
+        "window.zoomLevel" = 1;
+        "editor.mouseWheelZoom" = true;
+        "workbench.colorTheme" = "One Dark Pro Flat";
+        "editor.fontFamily" = "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
+        "editor.inlineSuggest.enabled" = true;
+        "files.autoSave" = "afterDelay";
 
-      "git.autofetch" = true;
-      "git.confirmSync" = false;
-      "git.enableCommitSigning" = true;
+        "git.autofetch" = true;
+        "git.confirmSync" = false;
+        "git.enableCommitSigning" = true;
 
-      "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "[json].editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "[javascript].editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "[typescript].editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "[typescriptreact].editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "[jsonc].editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "[markdown].editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[json].editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[javascript].editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[typescript].editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[typescriptreact].editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[jsonc].editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[markdown].editor.defaultFormatter" = "esbenp.prettier-vscode";
 
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
-      "nix.formatterPath" = "nixpkgs-fmt";
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "nix.formatterPath" = "nixpkgs-fmt";
 
-      "errorLens.gutterIconsEnabled" = true;
-      "errorLens.messageMaxChars" = 0;
+        "errorLens.gutterIconsEnabled" = true;
+        "errorLens.messageMaxChars" = 0;
 
-      "todo-tree.general.statusBar" = "total";
-      "todo-tree.highlights.highlightDelay" = 0;
-      "todo-tree.highlights.customHighlight.TODO.type" = "text";
-      "todo-tree.highlights.customHighlight.TODO.foreground" = "black";
-      "todo-tree.highlights.customHighlight.TODO.background" = "green";
-      "todo-tree.highlights.customHighlight.TODO.iconColour" = "green";
-      "todo-tree.highlights.customHighlight.TODO.icon" = "shield-check";
-      "todo-tree.highlights.customHighlight.TODO.gutterIcon" = true;
-      "todo-tree.highlights.customHighlight.FIXME.type" = "text";
-      "todo-tree.highlights.customHighlight.FIXME.foreground" = "black";
-      "todo-tree.highlights.customHighlight.FIXME.background" = "yellow";
-      "todo-tree.highlights.customHighlight.FIXME.iconColour" = "yellow";
-      "todo-tree.highlights.customHighlight.FIXME.icon" = "shield";
-      "todo-tree.highlights.customHighlight.FIXME.gutterIcon" = true;
-      "todo-tree.highlights.customHighlight.HACK.type" = "text";
-      "todo-tree.highlights.customHighlight.HACK.foreground" = "black";
-      "todo-tree.highlights.customHighlight.HACK.background" = "red";
-      "todo-tree.highlights.customHighlight.HACK.iconColour" = "red";
-      "todo-tree.highlights.customHighlight.HACK.icon" = "shield-x";
-      "todo-tree.highlights.customHighlight.HACK.gutterIcon" = true;
-      "todo-tree.highlights.customHighlight.BUG.type" = "text";
-      "todo-tree.highlights.customHighlight.BUG.foreground" = "black";
-      "todo-tree.highlights.customHighlight.BUG.background" = "orange";
-      "todo-tree.highlights.customHighlight.BUG.iconColour" = "orange";
-      "todo-tree.highlights.customHighlight.BUG.icon" = "bug";
-      "todo-tree.highlights.customHighlight.BUG.gutterIcon" = true;
+        "todo-tree.general.statusBar" = "total";
+        "todo-tree.highlights.highlightDelay" = 0;
+        "todo-tree.highlights.customHighlight.TODO.type" = "text";
+        "todo-tree.highlights.customHighlight.TODO.foreground" = "black";
+        "todo-tree.highlights.customHighlight.TODO.background" = "green";
+        "todo-tree.highlights.customHighlight.TODO.iconColour" = "green";
+        "todo-tree.highlights.customHighlight.TODO.icon" = "shield-check";
+        "todo-tree.highlights.customHighlight.TODO.gutterIcon" = true;
+        "todo-tree.highlights.customHighlight.FIXME.type" = "text";
+        "todo-tree.highlights.customHighlight.FIXME.foreground" = "black";
+        "todo-tree.highlights.customHighlight.FIXME.background" = "yellow";
+        "todo-tree.highlights.customHighlight.FIXME.iconColour" = "yellow";
+        "todo-tree.highlights.customHighlight.FIXME.icon" = "shield";
+        "todo-tree.highlights.customHighlight.FIXME.gutterIcon" = true;
+        "todo-tree.highlights.customHighlight.HACK.type" = "text";
+        "todo-tree.highlights.customHighlight.HACK.foreground" = "black";
+        "todo-tree.highlights.customHighlight.HACK.background" = "red";
+        "todo-tree.highlights.customHighlight.HACK.iconColour" = "red";
+        "todo-tree.highlights.customHighlight.HACK.icon" = "shield-x";
+        "todo-tree.highlights.customHighlight.HACK.gutterIcon" = true;
+        "todo-tree.highlights.customHighlight.BUG.type" = "text";
+        "todo-tree.highlights.customHighlight.BUG.foreground" = "black";
+        "todo-tree.highlights.customHighlight.BUG.background" = "orange";
+        "todo-tree.highlights.customHighlight.BUG.iconColour" = "orange";
+        "todo-tree.highlights.customHighlight.BUG.icon" = "bug";
+        "todo-tree.highlights.customHighlight.BUG.gutterIcon" = true;
+      };
     };
   };
 
@@ -425,5 +427,5 @@ in {
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 }
