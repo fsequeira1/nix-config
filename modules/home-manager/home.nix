@@ -75,6 +75,7 @@ in {
   home.packages = with pkgs; [
     unstable.gnome-network-displays
     unstable.firefox
+    ghostty
     #vscode
     foliate
     zoom-us
@@ -337,7 +338,7 @@ in {
       favorite-apps = [
         "firefox.desktop"
         "codium.desktop"
-        "org.gnome.Console.desktop"
+        "com.mitchellh.ghostty.desktop"
         "org.gnome.Nautilus.desktop"
         "spotify.desktop"
       ];
@@ -396,7 +397,7 @@ in {
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       name = "Terminal";
-      command = "kgx";
+      command = "ghostty";
       binding = "<Control><Alt>t";
     };
 
