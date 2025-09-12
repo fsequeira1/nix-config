@@ -89,6 +89,7 @@ in {
     remmina
     whatsapp-for-linux
     waydroid
+    vscode-fhs
 
     #shell
     oh-my-zsh
@@ -222,7 +223,7 @@ in {
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = unstable.vscodium;
 
     mutableExtensionsDir = false;
 
@@ -260,6 +261,22 @@ in {
           ms-python.python
           #yzane.markdown-pdf
         ]
+#        ++ (with unstable.vscode-extensions; [
+#        github.copilot
+#        github.copilot-chat
+##          {
+##            name = "copilot";
+##            publisher = "GitHub";
+##            version = "1.362.1758";
+##            sha256 = "sha256-Fx4MtHvmbR0ay4UIntblzZugwRcVmhka4lJMK4YRxqA=";
+##          }
+##          {
+##            name = "copilot-chat";
+##            publisher = "GitHub";
+##            version = "0.30.3";
+##            sha256 = "sha256-MugWkmyQx/K/9hFGDAKSG6hC6altD6PImyRAHJms5iU=";
+##          }
+#        ])
         ++ (with extensions.vscode-marketplace; [
           # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
           #ms-playwright.playwright
