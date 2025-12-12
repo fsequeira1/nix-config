@@ -87,7 +87,7 @@ in {
     git
     vlc
     remmina
-    whatsapp-for-linux
+    wasistlos
     waydroid
     vscode-fhs
 
@@ -134,6 +134,7 @@ in {
     zstd
     gnupg
     direnv
+    koreader
 
     # nix related
     #
@@ -185,6 +186,7 @@ in {
     unstable.go-tools
     unstable.chromium
     lmstudio
+    lazydocker
   ];
 
   # Enable home-manager, git and zsh
@@ -445,5 +447,5 @@ in {
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 }

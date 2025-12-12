@@ -10,6 +10,7 @@
     ../../modules/nixos/laptop.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/security.nix
+    ../../modules/nixos/vagrant.nix
     #      <home-manager/nixos>
   ];
 
