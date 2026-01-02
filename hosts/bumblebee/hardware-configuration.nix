@@ -42,15 +42,15 @@
   };
 
   fileSystems."/" = {
-      device = "/dev/disk/by-uuid/4b16e873-66e5-46c0-a880-47b6f28a753a";
-      fsType = "ext4";
-    };
+    device = "/dev/disk/by-uuid/4b16e873-66e5-46c0-a880-47b6f28a753a";
+    fsType = "ext4";
+  };
 
   boot.initrd.luks.devices."luks-16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3".device = "/dev/disk/by-uuid/16c3483f-1fd2-481e-a6ad-90ed6f4d1fa3";
 
-     fileSystems."/boot" = {
-      device = "/dev/disk/by-uuid/E81C-D230";
-      fsType = "vfat";
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/E81C-D230";
+    fsType = "vfat";
   };
 
   swapDevices = [
@@ -69,27 +69,27 @@
     cpu = {
       intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
-  nvidia = {
-    # Modesetting is needed for most Wayland compositors
-    modesetting.enable = true;
+    nvidia = {
+      # Modesetting is needed for most Wayland compositors
+      modesetting.enable = true;
 
-    # Use the open source version of the kernel module
-    # Only available on driver 515.43.04+
-    open = false;
+      # Use the open source version of the kernel module
+      # Only available on driver 515.43.04+
+      open = false;
 
-    # Enable the nvidia settings menu
-    nvidiaSettings = true;
+      # Enable the nvidia settings menu
+      nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
 
-  # Enable graphics
+    # Enable graphics
     graphics = {
       enable = true;
       extraPackages = with pkgs; [intel-media-driver];
       enable32Bit = true;
     };
-};
+  };
   #
   #  services.xserver.videoDrivers = ["nvidia"];
   #  hardware.nvidia = {

@@ -1,7 +1,11 @@
 # Vagrant with QEMU configuration
-{ config, pkgs, lib, user, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  user,
+  ...
+}: {
   # Enable virtualization services
   virtualisation = {
     # Enable libvirtd for QEMU/KVM
@@ -13,7 +17,7 @@
         swtpm.enable = true;
       };
     };
-    
+
     # Enable spice USB redirection
     spiceUSBRedirection.enable = true;
   };
@@ -22,7 +26,7 @@
   environment.systemPackages = with pkgs; [
     # Vagrant
     vagrant
-    
+
     # QEMU and virtualization tools
     qemu_kvm
     qemu
@@ -38,7 +42,7 @@
 
   # Add user to required groups for virtualization
   users.users."${user}" = {
-    extraGroups = [ "libvirtd" "kvm" ];
+    extraGroups = ["libvirtd" "kvm"];
   };
 
   # Enable dconf for virt-manager GUI settings
@@ -46,13 +50,13 @@
 
   # Network configuration for libvirt
   #networking.firewall.checkReversePath = false;
-  networking.firewall.trustedInterfaces = [ "virbr0" ];
+  networking.firewall.trustedInterfaces = ["virbr0"];
 
   # Services configuration
   services = {
     # Enable SPICE vdagent for better VM integration
     spice-vdagentd.enable = true;
-    
+
     # Enable USB redirection service
     udev.extraRules = ''
       # USB redirection for SPICE
@@ -66,14 +70,14 @@
     extraModprobeConfig = ''
       # Enable nested virtualization for Intel
       options kvm_intel nested=1
-      
-      # Enable nested virtualization for AMD  
+
+      # Enable nested virtualization for AMD
       options kvm_amd nested=1
     '';
-    
+
     # Load required kernel modules
-    kernelModules = [ "kvm-intel" "kvm-amd" "vfio-pci" ];
-    
+    kernelModules = ["kvm-intel" "kvm-amd" "vfio-pci"];
+
     # Boot parameters for virtualization
     kernelParams = [
       # Enable IOMMU for hardware passthrough (optional)

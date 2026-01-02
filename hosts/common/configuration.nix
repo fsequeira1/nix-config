@@ -42,11 +42,10 @@
       xkb = {
         layout = "pt";
         variant = "";
-
       };
       # Enable automatic login for the user.
     };
-    displayManager = { 
+    displayManager = {
       autoLogin.enable = true;
       autoLogin.user = "${user}";
     };
@@ -134,5 +133,5 @@
     package = pkgs.nixVersions.stable;
     extraOptions = "experimental-features = nix-command flakes";
   };
-  nixpkgs.config.allowUnfree = true;  
+  nixpkgs.config.allowUnfree = true;
 }

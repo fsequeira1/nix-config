@@ -37,10 +37,10 @@ in {
       sha256 = "4b5ca670c1ac865927e98ac5bf5c131eca46cc20abf0bd0612db955bfc979de8";
     }) {inherit config lib;})
 
-    (import (builtins.fetchurl {
-      url = "https://gist.githubusercontent.com/piousdeer/b29c272eaeba398b864da6abf6cb5daa/raw/41e569ba110eb6ebbb463a6b1f5d9fe4f9e82375/vscode.nix";
-      sha256 = "fed877fa1eefd94bc4806641cea87138df78a47af89c7818ac5e76ebacbd025f";
-    }) {inherit config lib pkgs;})
+    #    (import (builtins.fetchurl {
+    #      url = "https://gist.githubusercontent.com/piousdeer/b29c272eaeba398b864da6abf6cb5daa/raw/41e569ba110eb6ebbb463a6b1f5d9fe4f9e82375/vscode.nix";
+    #      sha256 = "fed877fa1eefd94bc4806641cea87138df78a47af89c7818ac5e76ebacbd025f";
+    #    }) {inherit config lib pkgs;})
   ];
 
   nixpkgs = {
@@ -194,9 +194,16 @@ in {
     home-manager.enable = true;
     git = {
       enable = true;
-      extraConfig.url."ssh://git@".pushInsteadOf = "https://";
-      userName = "Filipe Sequeira";
-      userEmail = "fsequeira1@users.noreply.github.com";
+      settings = {
+        core.editor = "nvim";
+        pull.rebase = true;
+        init.defaultBranch = "main";
+        url."ssh://git@".pushInsteadOf = "https://";
+        user = {
+          name = "Filipe Sequeira";
+          email = "fsequeira1@users.noreply.github.com";
+        };
+      };
     };
     atuin = {
       enable = true;
@@ -263,22 +270,22 @@ in {
           ms-python.python
           #yzane.markdown-pdf
         ]
-#        ++ (with unstable.vscode-extensions; [
-#        github.copilot
-#        github.copilot-chat
-##          {
-##            name = "copilot";
-##            publisher = "GitHub";
-##            version = "1.362.1758";
-##            sha256 = "sha256-Fx4MtHvmbR0ay4UIntblzZugwRcVmhka4lJMK4YRxqA=";
-##          }
-##          {
-##            name = "copilot-chat";
-##            publisher = "GitHub";
-##            version = "0.30.3";
-##            sha256 = "sha256-MugWkmyQx/K/9hFGDAKSG6hC6altD6PImyRAHJms5iU=";
-##          }
-#        ])
+        #        ++ (with unstable.vscode-extensions; [
+        #        github.copilot
+        #        github.copilot-chat
+        ##          {
+        ##            name = "copilot";
+        ##            publisher = "GitHub";
+        ##            version = "1.362.1758";
+        ##            sha256 = "sha256-Fx4MtHvmbR0ay4UIntblzZugwRcVmhka4lJMK4YRxqA=";
+        ##          }
+        ##          {
+        ##            name = "copilot-chat";
+        ##            publisher = "GitHub";
+        ##            version = "0.30.3";
+        ##            sha256 = "sha256-MugWkmyQx/K/9hFGDAKSG6hC6altD6PImyRAHJms5iU=";
+        ##          }
+        #        ])
         ++ (with extensions.vscode-marketplace; [
           # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
           #ms-playwright.playwright
@@ -362,7 +369,7 @@ in {
         "spotify.desktop"
       ];
     };
-    "org/gnome/gnome-session" = { 
+    "org/gnome/gnome-session" = {
       auto-save-session = true;
     };
     "org/gnome/shell" = {
