@@ -87,7 +87,6 @@ in {
     git
     vlc
     remmina
-    wasistlos
     waydroid
     vscode-fhs
 
@@ -163,6 +162,7 @@ in {
     usbutils # lsusb
     powertop
     lshw
+    antigravity-fhs
 
     #gaming
     steam-tui
@@ -230,7 +230,7 @@ in {
 
   # TODO move to vscode module and reduce vscode plugins
 
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
     package = unstable.vscodium;
 
@@ -454,5 +454,5 @@ in {
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }
