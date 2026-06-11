@@ -1,5 +1,3 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   lib,
   config,
@@ -7,55 +5,23 @@
   unstable,
   user,
   system,
+  inputs,
   ...
 }: let
   gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
     gke-gcloud-auth-plugin
   ]);
-  extensions =
-    (import (builtins.fetchGit {
-      url = "https://github.com/nix-community/nix-vscode-extensions";
-      ref = "refs/heads/master";
-      rev = "c43d9089df96cf8aca157762ed0e2ddca9fcd71e";
-    }))
-    .extensions
-    .${system};
+  extensions =inputs.nix-vscode-extensions.extensions.${system};
 in {
-  # You can import other home-manager modules here
   imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
-
-    # Source: https://gist.github.com/piousdeer/b29c272eaeba398b864da6abf6cb5daa
-    # Make vscode settings writable
-
     (import (builtins.fetchurl {
       url = "https://gist.githubusercontent.com/piousdeer/b29c272eaeba398b864da6abf6cb5daa/raw/41e569ba110eb6ebbb463a6b1f5d9fe4f9e82375/mutability.nix";
       sha256 = "4b5ca670c1ac865927e98ac5bf5c131eca46cc20abf0bd0612db955bfc979de8";
     }) {inherit config lib;})
-
-    #    (import (builtins.fetchurl {
-    #      url = "https://gist.githubusercontent.com/piousdeer/b29c272eaeba398b864da6abf6cb5daa/raw/41e569ba110eb6ebbb463a6b1f5d9fe4f9e82375/vscode.nix";
-    #      sha256 = "fed877fa1eefd94bc4806641cea87138df78a47af89c7818ac5e76ebacbd025f";
-    #    }) {inherit config lib pkgs;})
   ];
 
   nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
+    overlays = [];
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -211,7 +177,6 @@ in {
     };
     zellij = {
       enable = true;
-      #enableZshIntegration = true;
     };
     zsh = {
       enable = true;
@@ -228,7 +193,6 @@ in {
     };
   };
 
-  # TODO move to vscode module and reduce vscode plugins
 
   programs.vscodium = {
     enable = true;
@@ -268,32 +232,10 @@ in {
           ipedrazas.kubernetes-snippets
           golang.go
           ms-python.python
-          #yzane.markdown-pdf
+          esbenp.prettier-vscode
         ]
-        #        ++ (with unstable.vscode-extensions; [
-        #        github.copilot
-        #        github.copilot-chat
-        ##          {
-        ##            name = "copilot";
-        ##            publisher = "GitHub";
-        ##            version = "1.362.1758";
-        ##            sha256 = "sha256-Fx4MtHvmbR0ay4UIntblzZugwRcVmhka4lJMK4YRxqA=";
-        ##          }
-        ##          {
-        ##            name = "copilot-chat";
-        ##            publisher = "GitHub";
-        ##            version = "0.30.3";
-        ##            sha256 = "sha256-MugWkmyQx/K/9hFGDAKSG6hC6altD6PImyRAHJms5iU=";
-        ##          }
-        #        ])
         ++ (with extensions.vscode-marketplace; [
           # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
-          #ms-playwright.playwright
-          #ms-vscode.test-adapter-converter
-          #mtxr.sqltools-driver-sqlite
-          #ms-vscode-remote.vscode-remote-extensionpack
-          #ms-vscode.remote-explorer
-          #ms-vsliveshare.vsliveshare
           amodio.toggle-excluded-files
           ettoreciprian.vscode-websearch
         ]);
@@ -326,33 +268,6 @@ in {
 
         "errorLens.gutterIconsEnabled" = true;
         "errorLens.messageMaxChars" = 0;
-
-        "todo-tree.general.statusBar" = "total";
-        "todo-tree.highlights.highlightDelay" = 0;
-        "todo-tree.highlights.customHighlight.TODO.type" = "text";
-        "todo-tree.highlights.customHighlight.TODO.foreground" = "black";
-        "todo-tree.highlights.customHighlight.TODO.background" = "green";
-        "todo-tree.highlights.customHighlight.TODO.iconColour" = "green";
-        "todo-tree.highlights.customHighlight.TODO.icon" = "shield-check";
-        "todo-tree.highlights.customHighlight.TODO.gutterIcon" = true;
-        "todo-tree.highlights.customHighlight.FIXME.type" = "text";
-        "todo-tree.highlights.customHighlight.FIXME.foreground" = "black";
-        "todo-tree.highlights.customHighlight.FIXME.background" = "yellow";
-        "todo-tree.highlights.customHighlight.FIXME.iconColour" = "yellow";
-        "todo-tree.highlights.customHighlight.FIXME.icon" = "shield";
-        "todo-tree.highlights.customHighlight.FIXME.gutterIcon" = true;
-        "todo-tree.highlights.customHighlight.HACK.type" = "text";
-        "todo-tree.highlights.customHighlight.HACK.foreground" = "black";
-        "todo-tree.highlights.customHighlight.HACK.background" = "red";
-        "todo-tree.highlights.customHighlight.HACK.iconColour" = "red";
-        "todo-tree.highlights.customHighlight.HACK.icon" = "shield-x";
-        "todo-tree.highlights.customHighlight.HACK.gutterIcon" = true;
-        "todo-tree.highlights.customHighlight.BUG.type" = "text";
-        "todo-tree.highlights.customHighlight.BUG.foreground" = "black";
-        "todo-tree.highlights.customHighlight.BUG.background" = "orange";
-        "todo-tree.highlights.customHighlight.BUG.iconColour" = "orange";
-        "todo-tree.highlights.customHighlight.BUG.icon" = "bug";
-        "todo-tree.highlights.customHighlight.BUG.gutterIcon" = true;
       };
     };
   };
@@ -383,7 +298,7 @@ in {
         "dash-to-panel@jderose9.github.com"
         "caffeine@patapon.info"
         "quick-settings-audio-panel@rayzeq.github.io"
-        "blur-my-shell@aunetx"
+        #"blur-my-shell@aunetx"
       ];
     };
     "org/gnome/mutter" = {

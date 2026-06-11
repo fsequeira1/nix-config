@@ -24,11 +24,12 @@
       luks.devices."luks-b876dadf-218b-4634-87f4-8f62d6235364".device = "/dev/disk/by-uuid/b876dadf-218b-4634-87f4-8f62d6235364";
       verbose = false;
     };
-    plymouth = {
-      enable = true;
-      theme = "lone";
-      themePackages = [(pkgs.adi1090x-plymouth-themes.override {selected_themes = ["lone"];})];
-    };
+    #plymouth.enable = true;
+    #plymouth = {
+    #  enable = true;
+    #  theme = "lone";
+    #  themePackages = [(pkgs.adi1090x-plymouth-themes.override {selected_themes = ["lone"];})];
+    #};
     loader.timeout = 0;
     kernelParams = [
       "quiet"

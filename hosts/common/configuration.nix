@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
+  lib,
   user,
   ...
 }: {
@@ -28,6 +29,17 @@
   };
 
   # Configure keymap in X11
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernel.sysctl = {"vm.swappiness" = 10;};
+  };
+  # Disable nerwork wait-online to speed up boot
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
+  systemd.services.systemd-rfkill.enable = false;
+  systemd.sockets.systemd-rfkill.enable = false;
+
   services = {
     pulseaudio.enable = false;
     # Enable Flatpak.
@@ -80,13 +92,14 @@
       gamescopeSession.enable = true;
     };
   };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.defaultUserShell = pkgs.zsh;
   users.users.${user} = {
     isNormalUser = true;
     description = "Filipe Sequeira";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "kvm" "qemu-libvirtd"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     #packages = with pkgs; [
     #firefox
     #thunderbird

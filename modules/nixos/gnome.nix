@@ -5,7 +5,6 @@
   # Configure keymap in X11
   services.displayManager.gdm = {
     enable = true;
-    #wayland = true;
   };
   services.desktopManager.gnome.enable = true;
 
@@ -15,13 +14,10 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.gnome.excludePackages =
-    (with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
       gnome-photos
       gnome-tour
       gedit
-    ])
-    ++ (with pkgs; [
       cheese # webcam tool
       gnome-music
       #gedit # text editor
@@ -42,17 +38,16 @@
       #evince      # document viewer
       #file-roller # archive manager
       #seahorse    # password manager
-    ]);
+    ];
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
     gnome-tweaks
-    #gnome.extensions
     gnomeExtensions.user-themes
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.vitals
     gnomeExtensions.dash-to-panel
     gnomeExtensions.caffeine
-    gnomeExtensions.blur-my-shell
+    #gnomeExtensions.blur-my-shell
     gnomeExtensions.quick-settings-audio-panel
   ];
 }
