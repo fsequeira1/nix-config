@@ -145,6 +145,7 @@
   nix = {
     package = pkgs.nixVersions.stable;
     extraOptions = "experimental-features = nix-command flakes";
+    optimise.automatic = true;
   };
   nixpkgs.config.allowUnfree = true;
 }
